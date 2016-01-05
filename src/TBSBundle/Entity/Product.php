@@ -40,7 +40,8 @@ class Product
     /**
      * @var int
      *
-     * @ORM\Column(name="s_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Stock")
+     * @ORM\JoinColumn(name="s_id", referencedColumnName="s_id", onDelete="CASCADE")
      */
     private $sId;
 

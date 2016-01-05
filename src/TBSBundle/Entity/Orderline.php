@@ -40,14 +40,16 @@ class Orderline
     /**
      * @var int
      *
-     * @ORM\Column(name="b_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Basket")
+     * @ORM\JoinColumn(name="b_id", referencedColumnName="b_id", onDelete="CASCADE")
      */
     private $bId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="p_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="p_id", referencedColumnName="p_id", onDelete="CASCADE")
      */
     private $pId;
 
