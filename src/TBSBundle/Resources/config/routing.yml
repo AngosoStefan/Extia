@@ -1,10 +1,10 @@
 tbs_homepage:
     path:     /
-    defaults: { _controller: TBSBundle:Default:index }
+    defaults: { _controller: FOSUserBundle:Security:login }
 
 tbs_index:
-    path:     /login
-    defaults: { _controller: FOSUserBundle:Security:login }
+    path:     /index
+    defaults: { _controller: TBSBundle:Default:index }
 
 tbs_delete_list_user:
     path:     /deletelistuser
