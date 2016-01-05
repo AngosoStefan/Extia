@@ -118,14 +118,4 @@ class Product
     {
         return $this->sId;
     }
-
-    /**
-     * Get pId
-     *
-     * @return integer
-     */
-    public function getPId()
-    {
-        return $this->pId;
-    }
 }

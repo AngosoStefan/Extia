@@ -147,14 +147,4 @@ class Orderline
     {
         return $this->pId;
     }
-
-    /**
-     * Get olId
-     *
-     * @return integer
-     */
-    public function getOlId()
-    {
-        return $this->olId;
-    }
 }
