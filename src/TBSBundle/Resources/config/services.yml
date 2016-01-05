@@ -1,0 +1,4 @@
+services:
+#    tbs.example:
+#        class: TBSBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

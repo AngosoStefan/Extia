@@ -1,0 +1,3 @@
+tbs_homepage:
+    path:     /
+    defaults: { _controller: TBSBundle:Default:index }
