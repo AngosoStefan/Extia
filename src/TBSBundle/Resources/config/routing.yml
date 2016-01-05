@@ -1,3 +1,15 @@
 tbs_homepage:
     path:     /
     defaults: { _controller: TBSBundle:Default:index }
+
+tbs_index:
+    path:     /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+tbs_delete_list_user:
+    path:     /deletelistuser
+    defaults: { _controller: TBSBundle:Default:delete }
+
+tbs_delete_user:
+    path:     /{id}/deleteuser
+    defaults: { _controller: TBSBundle:Default:deleteUser }

@@ -10,4 +10,15 @@ namespace TBSBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function findUserByUsername($username)
+    {
+        $query = $this->getEntityManager()
+                        ->createQuery("
+	            SELECT s FROM TBSBundle:User s WHERE s.username LIKE :username"
+                        );
+        $query->setParameter('username', $username.'%');
+        return $query->getResult();
+    }
+
 }

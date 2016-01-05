@@ -1,1 +1,34 @@
-Hello World!
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	{% if app.user == 'admin' %}
+
+	<div class="list">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('fos_user_registration_register') }}">Ajout d'un nouveau client</a></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_delete_list_user') }}">Supprimer un client</a></div>
+		</div>
+	</div>
+
+	{% elseif app.user == 'ca' %}
+
+	<!-- Page d'accueil -->
+
+	{% else %}
+
+	<a href="{{ path('fos_user_security_login') }}">Coucou, cliquez pour vous connecter</a>
+	
+	{% endif %}
+
+	{% if app.user != null %}
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{path('fos_user_profile_edit')}}">Mettre &agrave; jour mon profil</a></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3 logout"><a href="{{ path('fos_user_security_logout') }}">D&eacute;connexion</a></div>
+		</div>
+	{% endif %}
+
+{% endblock body %}
