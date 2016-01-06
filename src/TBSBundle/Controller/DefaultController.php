@@ -8,6 +8,12 @@ use TBSBundle\Entity\User;
 class DefaultController extends Controller
 {
     public function indexAction(){
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if($user== 'anon.')
+        {
+            return $this->redirect($this->generateUrl("tbs_login"));
+        }
     	$em = $this->getDoctrine()->getManager();
         return $this->render('TBSBundle:Default:index.html.twig');
     }
