@@ -87,4 +87,14 @@ class Stock
     {
         return $this->sTotal;
     }
+
+    /**
+     * Get sId
+     *
+     * @return integer
+     */
+    public function getSId()
+    {
+        return $this->sId;
+    }
 }

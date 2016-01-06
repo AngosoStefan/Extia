@@ -31,6 +31,21 @@ class Basket
     private $bFloor;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="b_room", type="integer")
+     */
+    private $bRoom;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $id;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="b_date", type="datetime")
@@ -45,6 +60,10 @@ class Basket
     private $bStatus;
 
 
+
+    function __construct() {
+        $this->bDate = new \DateTime();
+    }
     
 
     /**
@@ -119,29 +138,6 @@ class Basket
         return $this->bStatus;
     }
 
-    /**
-     * Set cUsername
-     *
-     * @param string $cUsername
-     *
-     * @return Basket
-     */
-    public function setCUsername($cUsername)
-    {
-        $this->cUsername = $cUsername;
-
-        return $this;
-    }
-
-    /**
-     * Get cUsername
-     *
-     * @return string
-     */
-    public function getCUsername()
-    {
-        return $this->cUsername;
-    }
 
     /**
      * Get bId
@@ -151,5 +147,58 @@ class Basket
     public function getBId()
     {
         return $this->bId;
+    }
+
+    /**
+     * Set bRoom
+     *
+     * @param integer $bRoom
+     *
+     * @return Basket
+     */
+    public function setBRoom($bRoom)
+    {
+        $this->bRoom = $bRoom;
+
+        return $this;
+    }
+
+    /**
+     * Get bRoom
+     *
+     * @return integer
+     */
+    public function getBRoom()
+    {
+        return $this->bRoom;
+    }
+
+    /**
+     * Set id
+     *
+     * @param \TBSBundle\Entity\User $id
+     *
+     * @return Basket
+     */
+    public function setId(\TBSBundle\Entity\User $id = null)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return \TBSBundle\Entity\User
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getBId();
     }
 }

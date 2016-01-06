@@ -17,8 +17,11 @@
 	<!-- Page d'accueil -->
 
 	{% else %}
-
-	<a href="{{ path('fos_user_security_login') }}">Coucou, cliquez pour vous connecter</a>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_add_basket') }}">Passer une commande</a></div>
+		</div>
+		
+	
 	
 	{% endif %}
 

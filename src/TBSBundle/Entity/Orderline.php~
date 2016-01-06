@@ -21,14 +21,6 @@ class Orderline
      */
     private $olId;
 
-    
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ol_product", type="string", length=20)
-     */
-    private $olProduct;
 
     /**
      * @var int
@@ -40,41 +32,20 @@ class Orderline
     /**
      * @var int
      *
-     * @ORM\Column(name="b_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Basket")
+     * @ORM\JoinColumn(name="b_id", referencedColumnName="b_id", onDelete="CASCADE")
      */
     private $bId;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="p_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Product")
+     * @ORM\JoinColumn(name="p_id", referencedColumnName="p_id", onDelete="CASCADE")
      */
     private $pId;
 
 
-    /**
-     * Set olProduct
-     *
-     * @param string $olProduct
-     *
-     * @return Orderline
-     */
-    public function setOlProduct($olProduct)
-    {
-        $this->olProduct = $olProduct;
-
-        return $this;
-    }
-
-    /**
-     * Get olProduct
-     *
-     * @return string
-     */
-    public function getOlProduct()
-    {
-        return $this->olProduct;
-    }
 
     /**
      * Set olQtt
@@ -100,14 +71,25 @@ class Orderline
         return $this->olQtt;
     }
 
+    
+    /**
+     * Get olId
+     *
+     * @return integer
+     */
+    public function getOlId()
+    {
+        return $this->olId;
+    }
+
     /**
      * Set bId
      *
-     * @param integer $bId
+     * @param \TBSBundle\Entity\Basket $bId
      *
      * @return Orderline
      */
-    public function setBId($bId)
+    public function setBId(\TBSBundle\Entity\Basket $bId = null)
     {
         $this->bId = $bId;
 
@@ -117,7 +99,7 @@ class Orderline
     /**
      * Get bId
      *
-     * @return int
+     * @return \TBSBundle\Entity\Basket
      */
     public function getBId()
     {
@@ -127,11 +109,11 @@ class Orderline
     /**
      * Set pId
      *
-     * @param integer $pId
+     * @param \TBSBundle\Entity\Product $pId
      *
      * @return Orderline
      */
-    public function setPId($pId)
+    public function setPId(\TBSBundle\Entity\Product $pId = null)
     {
         $this->pId = $pId;
 
@@ -141,10 +123,12 @@ class Orderline
     /**
      * Get pId
      *
-     * @return int
+     * @return \TBSBundle\Entity\Product
      */
     public function getPId()
     {
         return $this->pId;
     }
+
+
 }

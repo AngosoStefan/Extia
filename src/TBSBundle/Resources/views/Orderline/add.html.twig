@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<h1>Passer une commande2</h1>
+
+<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
+	{{form_widget(form2)}}
+
+
+	<input type="submit">
+
+</form>
+{% endblock %}

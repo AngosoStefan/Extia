@@ -13,3 +13,11 @@ tbs_delete_list_user:
 tbs_delete_user:
     path:     /{id}/deleteuser
     defaults: { _controller: TBSBundle:Default:deleteUser }
+
+tbs_add_basket:
+    path:     /addbasket
+    defaults: { _controller: TBSBundle:Basket:addInBasket }
+
+tbs_add_orderline:
+    path:     /{id}/addorder
+    defaults: { _controller: TBSBundle:Orderline:addInOrderline }

@@ -21,14 +21,6 @@ class Orderline
      */
     private $olId;
 
-    
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ol_product", type="string", length=20)
-     */
-    private $olProduct;
 
     /**
      * @var int
@@ -54,29 +46,6 @@ class Orderline
     private $pId;
 
 
-    /**
-     * Set olProduct
-     *
-     * @param string $olProduct
-     *
-     * @return Orderline
-     */
-    public function setOlProduct($olProduct)
-    {
-        $this->olProduct = $olProduct;
-
-        return $this;
-    }
-
-    /**
-     * Get olProduct
-     *
-     * @return string
-     */
-    public function getOlProduct()
-    {
-        return $this->olProduct;
-    }
 
     /**
      * Set olQtt
@@ -102,54 +71,7 @@ class Orderline
         return $this->olQtt;
     }
 
-    /**
-     * Set bId
-     *
-     * @param integer $bId
-     *
-     * @return Orderline
-     */
-    public function setBId($bId)
-    {
-        $this->bId = $bId;
-
-        return $this;
-    }
-
-    /**
-     * Get bId
-     *
-     * @return int
-     */
-    public function getBId()
-    {
-        return $this->bId;
-    }
-
-    /**
-     * Set pId
-     *
-     * @param integer $pId
-     *
-     * @return Orderline
-     */
-    public function setPId($pId)
-    {
-        $this->pId = $pId;
-
-        return $this;
-    }
-
-    /**
-     * Get pId
-     *
-     * @return int
-     */
-    public function getPId()
-    {
-        return $this->pId;
-    }
-
+    
     /**
      * Get olId
      *
@@ -159,4 +81,54 @@ class Orderline
     {
         return $this->olId;
     }
+
+    /**
+     * Set bId
+     *
+     * @param \TBSBundle\Entity\Basket $bId
+     *
+     * @return Orderline
+     */
+    public function setBId(\TBSBundle\Entity\Basket $bId = null)
+    {
+        $this->bId = $bId;
+
+        return $this;
+    }
+
+    /**
+     * Get bId
+     *
+     * @return \TBSBundle\Entity\Basket
+     */
+    public function getBId()
+    {
+        return $this->bId;
+    }
+
+    /**
+     * Set pId
+     *
+     * @param \TBSBundle\Entity\Product $pId
+     *
+     * @return Orderline
+     */
+    public function setPId(\TBSBundle\Entity\Product $pId = null)
+    {
+        $this->pId = $pId;
+
+        return $this;
+    }
+
+    /**
+     * Get pId
+     *
+     * @return \TBSBundle\Entity\Product
+     */
+    public function getPId()
+    {
+        return $this->pId;
+    }
+
+
 }
