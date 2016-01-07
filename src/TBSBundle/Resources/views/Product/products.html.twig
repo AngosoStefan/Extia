@@ -5,7 +5,7 @@
 {% for product in products %}
 		<article>
 			<header>
-				<h2>{{product.PName}} {{product.PUnit}} <a href="{{ path("tbs_edit_product", { id: product.PId}) }}">Modifier</a></h2>
+				<h2>{{product.PName}} {{product.PUnit}} <a href="{{ path("tbs_edit_product", { id: product.PId}) }}">Modifier</a> <a href="{{ path("tbs_delete_product", { id: product.PId}) }}">Supprimer</a></h2>
 			</header>
 		</article>
 {% endfor %}

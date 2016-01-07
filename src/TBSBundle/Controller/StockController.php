@@ -62,5 +62,14 @@ class StockController extends Controller
         return $this->render('TBSBundle:Stock:edit.html.twig',array('form'=> $form->createView(), 'stock'=> $stock,));
     }
 
+    public function deleteAction(Stock $stock){
+ 
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($stock);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl("tbs_stocks"));
+    }
 
 }

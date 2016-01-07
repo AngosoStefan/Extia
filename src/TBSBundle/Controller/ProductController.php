@@ -62,6 +62,16 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:edit.html.twig',array('form'=> $form->createView(), 'product'=> $product,));
     }
 
+    public function deleteAction(Product $product){
+ 
+        $em = $this->getDoctrine()->getManager();
+
+        $em->remove($product);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl("tbs_products"));
+    }
+
 
 
 

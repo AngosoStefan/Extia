@@ -38,6 +38,10 @@ tbs_edit_stock:
     path:     /{id}/editstock
     defaults: { _controller: TBSBundle:Stock:edit }
 
+tbs_delete_stock:
+    path:     /{id}/deletestock
+    defaults: { _controller: TBSBundle:Stock:delete }
+
 tbs_product:
     path:     /product
     defaults: { _controller: TBSBundle:Product:index }
@@ -53,3 +57,7 @@ tbs_products:
 tbs_edit_product:
     path:     /{id}/editproduct
     defaults: { _controller: TBSBundle:Product:edit }
+
+tbs_delete_product:
+    path:     /{id}/deleteproduct
+    defaults: { _controller: TBSBundle:Product:delete }
