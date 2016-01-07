@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<h1>Tous les utilisateurs</h1>
+
+{% for user in users %}
+		<article>
+			<header>
+				<h2>{{user.username}}<a href="{{ path("tbs_delete_user", { id: user.id}) }}">Delete</a></h2>
+			</header>
+		</article>
+{% endfor %}
+
+{% endblock %}

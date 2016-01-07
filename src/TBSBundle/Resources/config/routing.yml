@@ -21,3 +21,19 @@ tbs_add_basket:
 tbs_add_orderline:
     path:     /{id}/addorder
     defaults: { _controller: TBSBundle:Orderline:addInOrderline }
+
+tbs_stock:
+    path:     /stock
+    defaults: { _controller: TBSBundle:Stock:index }
+
+tbs_add_stock:
+    path:     /addstock
+    defaults: { _controller: TBSBundle:Stock:add }
+
+tbs_product:
+    path:     /product
+    defaults: { _controller: TBSBundle:Product:index }
+
+tbs_add_product:
+    path:     /addproduct
+    defaults: { _controller: TBSBundle:Product:add }

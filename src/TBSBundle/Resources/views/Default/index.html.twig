@@ -14,6 +14,14 @@
 
 	{% elseif app.user == 'ca' %}
 
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_stock') }}">Gestion de stock</a></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_product') }}">Gestion de produit</a></div>
+		</div>
+
+
 	<!-- Page d'accueil -->
 
 	{% else %}
