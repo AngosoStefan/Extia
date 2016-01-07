@@ -97,4 +97,9 @@ class Stock
     {
         return $this->sId;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getSName();
+    }
 }

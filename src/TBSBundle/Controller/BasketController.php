@@ -29,13 +29,13 @@ class BasketController extends Controller
 
             //echo $form['bFloor']->getData();
             $b->setId($em->getRepository("TBSBundle:User")->find($user->getId()));
+            $b->setBStatus('filling');
             $em = $this->getDoctrine()->getManager();
             $em->persist($b);
             $em->flush();   
             //echo $b->getBId();
 
             return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b ,));
-            
 
         }
        

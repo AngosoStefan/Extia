@@ -27,7 +27,7 @@ class BasketType extends AbstractType
                 ))
             ->add('bRoom')
             //->add('bDate', 'datetime')
-            ->add('bStatus')
+            //->add('bStatus')
             //->add('id')
         ;
     }
