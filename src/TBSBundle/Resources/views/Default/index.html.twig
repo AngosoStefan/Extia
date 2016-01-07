@@ -21,6 +21,14 @@
 			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_product') }}">Gestion de produit</a></div>
 		</div>
 
+		{% for sentbasket in sentbaskets %}
+		<article>
+			<header>
+				<h2>{{sentbasket.bId}}</h2>
+			</header>
+		</article>
+	{% endfor %}
+
 
 	<!-- Page d'accueil -->
 

@@ -4,18 +4,20 @@ namespace TBSBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\User;
+use TBSBundle\Entity\Basket;
 
 class DefaultController extends Controller
 {
     public function indexAction(){
-
+        $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
         if($user== 'anon.')
         {
             return $this->redirect($this->generateUrl("tbs_login"));
         }
+        $sentbaskets = $em->getRepository("TBSBundle:Basket")->findSentBaskets();
     	$em = $this->getDoctrine()->getManager();
-        return $this->render('TBSBundle:Default:index.html.twig');
+        return $this->render('TBSBundle:Default:index.html.twig',array('sentbaskets'=>$sentbaskets, 'orderlines'));
     }
 
      public function deleteAction(){

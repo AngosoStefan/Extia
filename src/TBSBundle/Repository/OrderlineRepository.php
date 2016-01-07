@@ -10,4 +10,15 @@ namespace TBSBundle\Repository;
  */
 class OrderlineRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function findOrderlines()
+    {
+        $query = $this->getEntityManager()
+                        ->createQuery("
+	            SELECT ol FROM TBSBundle:Orderline ol, TBSBundle:Basket b WHERE b.bStatus LIKE 'sent'"
+                        );
+        //$query->setParameter('b_id', $bId.'%');
+        return $query->getResult();
+    }
+
 }
