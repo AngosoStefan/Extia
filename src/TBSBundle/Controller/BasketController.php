@@ -5,6 +5,7 @@ namespace TBSBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\Basket;
 use TBSBundle\Entity\Orderline;
+use TBSBundle\Entity\User;
 use TBSBundle\Form\BasketType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class BasketController extends Controller
 {
 
-     public function addInBasketAction(Request $request){
+     public function addInBasketAction(Request $request,User $user){
         $em = $this->getDoctrine()->getManager();
 
         $b = new Basket();
@@ -27,7 +28,7 @@ class BasketController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             //echo $form['bFloor']->getData();
-
+            $b->setId($em->getRepository("TBSBundle:User")->find($user->getId()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($b);
             $em->flush();   

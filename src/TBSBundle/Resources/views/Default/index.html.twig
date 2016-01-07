@@ -26,7 +26,7 @@
 
 	{% else %}
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_add_basket') }}">Passer une commande</a></div>
+			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Passer une commande</a></div>
 		</div>
 		
 	
