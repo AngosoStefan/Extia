@@ -30,6 +30,14 @@ tbs_add_stock:
     path:     /addstock
     defaults: { _controller: TBSBundle:Stock:add }
 
+tbs_stocks:
+    path:     /stocks
+    defaults: { _controller: TBSBundle:Stock:stocks }
+
+tbs_edit_stock:
+    path:     /{id}/editstock
+    defaults: { _controller: TBSBundle:Stock:edit }
+
 tbs_product:
     path:     /product
     defaults: { _controller: TBSBundle:Product:index }
@@ -37,3 +45,11 @@ tbs_product:
 tbs_add_product:
     path:     /addproduct
     defaults: { _controller: TBSBundle:Product:add }
+
+tbs_products:
+    path:     /products
+    defaults: { _controller: TBSBundle:Product:products }
+
+tbs_edit_product:
+    path:     /{id}/editproduct
+    defaults: { _controller: TBSBundle:Product:edit }

@@ -2,10 +2,10 @@
 {% block body %}
 <h1>Tous les utilisateurs</h1>
 
-{% for user in users %}
+{% for stock in stocks %}
 		<article>
 			<header>
-				<h2>{{user.username}}<a href="{{ path("tbs_delete_user", { id: user.id}) }}">Delete</a></h2>
+				<h2>{{stock.SName}} {{stock.STotal}} 	<a href="{{ path("tbs_edit_stock", { id: stock.SId}) }}">Modifier</a></h2>
 			</header>
 		</article>
 {% endfor %}

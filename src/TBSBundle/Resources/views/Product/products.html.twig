@@ -2,10 +2,10 @@
 {% block body %}
 <h1>Tous les utilisateurs</h1>
 
-{% for user in users %}
+{% for product in products %}
 		<article>
 			<header>
-				<h2>{{user.username}}<a href="{{ path("tbs_delete_user", { id: user.id}) }}">Delete</a></h2>
+				<h2>{{product.PName}} {{product.PUnit}} <a href="{{ path("tbs_edit_product", { id: product.PId}) }}">Modifier</a></h2>
 			</header>
 		</article>
 {% endfor %}
