@@ -15,9 +15,18 @@ class DefaultController extends Controller
         {
             return $this->redirect($this->generateUrl("tbs_login"));
         }
-        $sentbaskets = $em->getRepository("TBSBundle:Basket")->findSentBaskets();
-    	$em = $this->getDoctrine()->getManager();
-        return $this->render('TBSBundle:Default:index.html.twig',array('sentbaskets'=>$sentbaskets, 'orderlines'));
+        $sentorders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+        
+        return $this->render('TBSBundle:Default:index.html.twig',array('sentorders'=>$sentorders));
+    }
+
+    public function indexcaAction(Basket $basket){
+        $em = $this->getDoctrine()->getManager();
+        
+        $basket->setBStatus('ongoing');
+        $em->persist($basket);
+        $em->flush();
+        return $this->redirect($this->generateUrl("tbs_index"));
     }
 
      public function deleteAction(){

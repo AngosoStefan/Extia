@@ -15,7 +15,7 @@ class OrderlineRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()
                         ->createQuery("
-	            SELECT ol FROM TBSBundle:Orderline ol, TBSBundle:Basket b WHERE b.bStatus LIKE 'sent'"
+	            SELECT ol FROM TBSBundle:Orderline ol, TBSBundle:Basket b WHERE ol.bId = b.bId AND b.bStatus LIKE 'sent'"
                         );
         //$query->setParameter('b_id', $bId.'%');
         return $query->getResult();

@@ -2,6 +2,10 @@ tbs_index:
     path:     /
     defaults: { _controller: TBSBundle:Default:index }
 
+tbs_indexca:
+    path:     /{id}/indexca
+    defaults: { _controller: TBSBundle:Default:indexca }
+
 tbs_login:
     path:     /login
     defaults: { _controller: FOSUserBundle:Security:login }

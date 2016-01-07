@@ -21,14 +21,17 @@
 			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_product') }}">Gestion de produit</a></div>
 		</div>
 
-		{% for sentbasket in sentbaskets %}
+		{% for sentorder in sentorders %}
 		<article>
 			<header>
-				<h2>{{sentbasket.bId}}</h2>
+				<h3>Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}">Valider</a></h3> 
+				<h3>Boisson: {{sentorder.pId}}</h3> 
+				<h3>Quantité: {{sentorder.olQtt}} </h3>
 			</header>
 		</article>
 	{% endfor %}
 
+	
 
 	<!-- Page d'accueil -->
 

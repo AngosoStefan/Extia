@@ -11,13 +11,13 @@ namespace TBSBundle\Repository;
 class BasketRepository extends \Doctrine\ORM\EntityRepository
 {
 
-	public function findSentBaskets()
+	public function findSentBaskets($id)
     {
         $query = $this->getEntityManager()
                         ->createQuery("
-	            SELECT b FROM TBSBundle:Basket b WHERE b.bStatus LIKE 'sent'"
+	            SELECT b FROM TBSBundle:Basket b WHERE b.bStatus LIKE :id"
                         );
-        //$query->setParameter('b_status', $b_status.'%');
+        $query->setParameter('id', $id.'%');
         return $query->getResult();
     }
 
