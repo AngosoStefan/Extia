@@ -29,7 +29,6 @@ class BasketController extends Controller
             //echo $form['bFloor']->getData();
 
             $em = $this->getDoctrine()->getManager();
-            $b->setBFloor('4th');
             $em->persist($b);
             $em->flush();   
             //echo $b->getBId();
