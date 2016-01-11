@@ -1,13 +1,24 @@
-{% extends "::base.html.twig" %}
-{% block body %}
-<h1>Tous les utilisateurs</h1>
+{% extends "TBSBundle::layout.html.twig" %}
 
-{% for product in products %}
-		<article>
-			<header>
-				<h2>{{product.PName}} {{product.PUnit}} <a href="{{ path("tbs_edit_product", { id: product.PId}) }}">Modifier</a> <a href="{{ path("tbs_delete_product", { id: product.PId}) }}">Supprimer</a></h2>
-			</header>
-		</article>
-{% endfor %}
+{% block mainzone %}
+<div class="col-lg-9 mainzone">
+
+	<h1>Tous les produits</h1>
+
+	<table>
+	<tr>
+		<th>Libell&eacute;</th>
+		<th>Qtt unitaire</th>
+	</tr>
+		{% for product in products %}
+		<tr>
+			<td>{{product.PName}}</td>
+			<td>{{product.PUnit}}</td>
+			<td><a href="{{ path("tbs_edit_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="{{ path("tbs_delete_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-remove"></span></a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
 
 {% endblock %}

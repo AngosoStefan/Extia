@@ -1,36 +1,53 @@
 {% extends "::base.html.twig" %}
-{% block body %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}"></a>
-            {% endif %}
-        </div>
 
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <div class="flash-{{ type }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        {% endif %}
+{% block options %}
 
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-        </div>
-    </body>
-</html>
-{% endblock %}
+	{% if app.user != null %}
+	<div class="col-lg-1">
+		<a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
+	</div>
+	<div class="col-lg-1">
+		<span class="glyphicon glyphicon-stats topoption" style="color:white;"></span>
+	</div>
+	<div class="col-lg-1">
+		<a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
+	</div>
+	{% endif %}
+
+{% endblock options %}
+
+{% block menu %}
+
+<div class="col-lg-3">
+	
+	<ul class="nav nav-pills nav-stacked">
+
+		{% if app.user == 'admin' %}
+
+		<li role="presentation"><a href="{{ path('fos_user_registration_register') }}">Ajouter un client</a></li>
+		<li role="presentation"><a href="{{ path('tbs_delete_list_user') }}">Supprimer un client</a></li>
+
+		{% elseif app.user == 'ca' %}
+
+		<li><a href="{{ path('tbs_add_stock') }}">Ajouter un stock</a></li>
+		<li><a href="{{ path('tbs_stocks') }}">Modifier un stock</a></li>
+		<li><a href="{{ path('tbs_add_product') }}">Ajouter un produit</a></li>
+		<li><a href="{{ path('tbs_products') }}">Modifier un produit</a></li>
+
+		{% elseif app.user != null %}
+		<li role="presentation"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Passer une commande</a></li>
+		{% endif %}
+	</ul>
+</div>
+
+{% endblock menu %}
+
+{% block mainzone %}
+
+{% endblock mainzone %}
+
+{% block footer %}
+    <div class="row footer">
+
+    </div>
+{% endblock footer %}

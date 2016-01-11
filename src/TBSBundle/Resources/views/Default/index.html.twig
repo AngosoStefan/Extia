@@ -1,56 +1,16 @@
-{% extends "::base.html.twig" %}
+{% extends "TBSBundle::layout.html.twig" %}
 
-{% block body %}
-	{% if app.user == 'admin' %}
-
-	<div class="list">
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('fos_user_registration_register') }}">Ajout d'un nouveau client</a></div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_delete_list_user') }}">Supprimer un client</a></div>
-		</div>
-	</div>
-
-	{% elseif app.user == 'ca' %}
-
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_stock') }}">Gestion de stock</a></div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_product') }}">Gestion de produit</a></div>
-		</div>
-
-		{% for sentorder in sentorders %}
-		<article>
-			<header>
-				<h3>Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}">Valider</a></h3> 
-				<h3>Boisson: {{sentorder.pId}}</h3> 
-				<h3>Quantité: {{sentorder.olQtt}} </h3>
-			</header>
-		</article>
+{% block mainzone %}
+<div class="col-lg-9 mainzone">
+	{% for sentorder in sentorders %}
+	<article>
+		<header>
+			<h3>Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}">Valider</a></h3> 
+			<h3>Boisson: {{sentorder.pId}}</h3> 
+			<h3>Quantité: {{sentorder.olQtt}} </h3>
+		</header>
+	</article>
 	{% endfor %}
+</div>
 
-	
-
-	<!-- Page d'accueil -->
-
-	{% else %}
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Passer une commande</a></div>
-		</div>
-		
-	
-	
-	{% endif %}
-
-	{% if app.user != null %}
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3"><a href="{{path('fos_user_profile_edit')}}">Mettre &agrave; jour mon profil</a></div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3 logout"><a href="{{ path('fos_user_security_logout') }}">D&eacute;connexion</a></div>
-		</div>
-	{% endif %}
-
-{% endblock body %}
+{% endblock mainzone %}

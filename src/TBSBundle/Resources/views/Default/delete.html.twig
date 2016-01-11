@@ -1,13 +1,18 @@
-{% extends "::base.html.twig" %}
-{% block body %}
-<h1>Tous les utilisateurs</h1>
+{% extends "TBSBundle::layout.html.twig" %}
 
-{% for user in users %}
-		<article>
-			<header>
-				<h2>{{user.username}}<a href="{{ path("tbs_delete_user", { id: user.id}) }}">Delete</a></h2>
-			</header>
-		</article>
-{% endfor %}
+{% block mainzone %}
+	<div class="col-lg-9 mainzone">
+
+		<h1>Tous les utilisateurs</h1>
+		
+		<table>
+		{% for user in users %}
+			<tr>
+				<td>{{user.username}}</td>
+				<td><a href="{{ path("tbs_delete_user", { id: user.id}) }}"><span class="glyphicon glyphicon-remove"></span></a></td>
+			</tr>
+		{% endfor %}
+		</table>
+	</div>
 
 {% endblock %}

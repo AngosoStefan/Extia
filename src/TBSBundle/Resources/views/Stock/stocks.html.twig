@@ -1,13 +1,28 @@
-{% extends "::base.html.twig" %}
-{% block body %}
-<h1>Tous les utilisateurs</h1>
+{% extends "TBSBundle::layout.html.twig" %}
 
-{% for stock in stocks %}
-		<article>
-			<header>
-				<h2>{{stock.SName}} {{stock.STotal}} 	<a href="{{ path("tbs_edit_stock", { id: stock.SId}) }}">Modifier</a> <a href="{{ path("tbs_delete_stock", { id: stock.SId}) }}">Supprimer</a> </h2>
-			</header>
-		</article>
-{% endfor %}
+{% block mainzone %}
+	<div class="col-lg-9 mainzone">
+
+	<h1>Tous les stocks</h1>
+
+	<table>
+		<tr>
+			<th>Libell&eacute;</th>
+			<th>Qtt totale</th>
+		</tr>
+		{% for stock in stocks %}
+			<tr>
+				<article>
+					<header>
+						<td>{{stock.SName}}</td>
+						<td>{{stock.STotal}}</td>
+						<td><a href="{{ path("tbs_edit_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+						<td><a href="{{ path("tbs_delete_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-remove"></span></a></td>
+					</header>
+				</article>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
 
 {% endblock %}

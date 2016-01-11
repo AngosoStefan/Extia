@@ -1,12 +1,3 @@
-/*body {
-color:black;
-background-color:white;
-background-image:url(./assets/extia.png);
-background-repeat:no-repeat;
-background-position:90% 3%;
-background-size: 500px;
-}*/
-
 
 /* Dimensionnement général */
 
@@ -16,7 +7,7 @@ html,body {
   width: auto !important;
   overflow-x:hidden !important;
   background-color: #22313F;
-  color: white;
+  color:white;
 }
 
 [class*="col-"] {
@@ -24,47 +15,22 @@ html,body {
   text-align: center;
 }
 
-
 /* Titre principal */
 
 h1 {
 	font-weight: bold;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	line-height: 120px;
+	line-height: 150px;
 	color: #22313F;
 }
 
 .bandeau {
 	background-color: #F26E27;
 	border-bottom: solid black 3px;
-	margin-bottom: 3%;
 }
 
-/*.bandeau .admin {
-	background-color: #9b59b6;
-}
-
-.bandeau .ta {
-	background-color: #27ae60;
-}*/
-
-
-/* Liens index */
-
-.list {
-  line-height: 100px;
-  font-size: 150%;
-}
-
-.elem {
-	line-height: 50px;
-  	font-size: 150%;
-}
-
-h3 {
-	text-align: center;
-}
+/* */
 
 a:link {
 	text-decoration: none;
@@ -91,11 +57,45 @@ a:hover:visited {
 }
 
 
-/* Formulaires menu */
+/* Gestion des options du bandeau */
 
-.form_demo{
-
+.topoption {
+	line-height: 150px;
+	font-size: 30px;
 }
+
+.topoption:hover {
+	color: #22313F;
+}
+
+.mainzone {
+	background-color: white;
+	height:70%;
+	border-left: solid black 3px;
+	border-bottom: solid black 3px;
+	color: #22313F;
+}
+
+.mainzone a {
+	color:red;
+}
+
+.mainzone table {
+	color: #22313F;
+}
+
+input {
+	color:black;
+}
+
+/* Liens index */
+
+h3 {
+	text-align: center;
+}
+
+
+/* Formulaires menu */
 
 .form_demo input{
 	color:black;
@@ -146,19 +146,13 @@ a:hover:visited {
 }
 
 
-/* Formulaires */
+/* Menu */
 
-legend {
-	color: white;
+li {
+	line-height: 50px;
+	font-size: 1.3em;
 }
 
-input {
-	color:black;
-}
-
-button {
-	color:black;
-}
 
 /* Tableaux */
 

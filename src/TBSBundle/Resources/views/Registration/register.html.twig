@@ -1,5 +1,13 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "TBSBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block mainzone %}
+<div class="col-lg-9 mainzone">
+
+	<h1> Ajouter un client </h1>
+
+	{% block fos_user_content %}
+	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+	{% endblock fos_user_content %}
+
+</div>
+{% endblock %}
