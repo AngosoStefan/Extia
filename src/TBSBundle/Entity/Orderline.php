@@ -45,6 +45,13 @@ class Orderline
      */
     private $pId;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="test", type="integer", nullable=true)
+     */
+    private $test;
+
 
 
     /**
@@ -131,4 +138,30 @@ class Orderline
     }
 
 
+
+    
+
+    /**
+     * Set test
+     *
+     * @param integer $test
+     *
+     * @return Orderline
+     */
+    public function setTest($test)
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    /**
+     * Get test
+     *
+     * @return integer
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
 }

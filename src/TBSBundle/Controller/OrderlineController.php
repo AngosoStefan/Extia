@@ -22,7 +22,22 @@ class OrderlineController extends Controller
             
             $em = $this->getDoctrine()->getManager();
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
+
+            $test = $o->getPId();
+
+            $product = $em->getRepository("TBSBundle:Product")->findOneByPId($test);
+
+            $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
+
+            $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
+
+            $stock->setSTotal($new_stock);
+
+            $o->setTest($stock->getSId());
+
+            
             $em->persist($o);
+            $em->persist($stock);
 
             // Finalisation de la commande
             $basket->setBStatus('sent');
