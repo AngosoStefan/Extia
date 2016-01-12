@@ -1,14 +1,12 @@
 {% extends "TBSBundle::layout.html.twig" %}
 
-{% block mainzone %}
-	<div class="col-lg-9 mainzone">
+{% block subzone %}
 
-		<h1>Editer un produit</h1>
+	<h1>Editer un produit</h1>
 
-		<form action="{{path("tbs_edit_product", { id: product.PId}) }}" method="post" enctype="multipart/form-data">
-			{{form_widget(form)}}
-			<input type="submit">
-		</form>
+	<form action="{{path("tbs_edit_product", { id: product.PId}) }}" method="post" enctype="multipart/form-data">
+		{{form_widget(form)}}
+		<input type="submit">
+	</form>
 
-	</div>
 {% endblock %}

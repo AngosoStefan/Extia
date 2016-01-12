@@ -9,30 +9,26 @@
 <body class="container-fluid">
 
     <div class="row bandeau">
-        <div class="col-lg-5">
-            <h1>Bienvenue sur Turtlebot Service</h1>
+        <div class="col-lg-12">
+            <img class="mainpic" src="{{ asset('assets/banniere.png') }}"/>
         </div>
-        <div class="col-lg-3">
-            <h1>{{app.user}}</h1>
-        </div>
+    </div>
+    <div class="row midzone">
+        {% block menu %}
+
+        {% endblock menu %}
+        {% block mainzone %}
+
+        {% endblock mainzone %}
         {% block options %}
 
         {% endblock %}
     </div>
     <div class="row">
-    {% block menu %}
+        {% block footer %}
 
-    {% endblock menu %}
-    {% block mainzone %}
-
-    {% endblock mainzone %}
+        {% endblock footer %}
     </div>
-    <div class="row">
-    {% block footer %}
-
-    {% endblock footer %}
-    </div>
-        
 </body>
 
 </html>

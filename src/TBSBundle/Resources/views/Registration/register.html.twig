@@ -1,13 +1,11 @@
 {% extends "TBSBundle::layout.html.twig" %}
 
-{% block mainzone %}
-<div class="col-lg-9 mainzone">
+{% block subzone %}
 
-	<h1> Ajouter un client </h1>
+	<h1> Inscription </h1>
 
 	{% block fos_user_content %}
 	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
 	{% endblock fos_user_content %}
 
-</div>
 {% endblock %}

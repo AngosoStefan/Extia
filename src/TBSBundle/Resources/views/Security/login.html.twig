@@ -1,6 +1,6 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block mainzone %}
+{% block subzone %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -11,6 +11,7 @@
 <br>
 <div class="row">
 	<div class="col-lg-4 col-lg-offset-4">
+	<h1>Connexion</h1>
 		<form action="{{ path("fos_user_security_check") }}" method="post">
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 			<div class="row">
@@ -41,6 +42,11 @@
 				</div>
 			</div>
 		</form>
+	</div>
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-4">
+			<a href="{{ path('fos_user_registration_register') }}"><h3 class="register">S'inscrire</h3></a>
+		</div>
 	</div>
 </div>
 

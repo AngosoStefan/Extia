@@ -1,34 +1,18 @@
 {% extends "::base.html.twig" %}
 
-{% block options %}
-
-	{% if app.user != null %}
-	<div class="col-lg-1">
-		<a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
-	</div>
-	<div class="col-lg-1">
-		<span class="glyphicon glyphicon-stats topoption" style="color:white;"></span>
-	</div>
-	<div class="col-lg-1">
-		<a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
-	</div>
-	{% endif %}
-
-{% endblock options %}
-
 {% block menu %}
 
-<div class="col-lg-3">
+<div class="col-lg-2">
 	
 	<ul class="nav nav-pills nav-stacked">
 
 		{% if app.user == 'admin' %}
 
-		<li role="presentation"><a href="{{ path('fos_user_registration_register') }}">Ajouter un client</a></li>
 		<li role="presentation"><a href="{{ path('tbs_delete_list_user') }}">Supprimer un client</a></li>
 
 		{% elseif app.user == 'ca' %}
 
+		<li><a href="{{ path('tbs_index') }}">Commandes</a></li>
 		<li><a href="{{ path('tbs_add_stock') }}">Ajouter un stock</a></li>
 		<li><a href="{{ path('tbs_stocks') }}">Modifier un stock</a></li>
 		<li><a href="{{ path('tbs_add_product') }}">Ajouter un produit</a></li>
@@ -44,7 +28,32 @@
 
 {% block mainzone %}
 
+<div class="col-lg-8 mainzone">
+
+	{% block subzone %}
+
+
+	{% endblock %}
+
+</div>
+
 {% endblock mainzone %}
+
+{% block options %}
+
+<div class="col-lg-2">
+
+	{% if app.user != null %}
+	<ul>
+		<li><a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a></li>
+		<li><span class="glyphicon glyphicon-stats topoption" style="color:white;"></span></li>
+		<li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a></li>
+	</ul>
+	{% endif %}
+
+</div>
+
+{% endblock options %}
 
 {% block footer %}
     <div class="row footer">

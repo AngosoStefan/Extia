@@ -1,16 +1,15 @@
 {% extends "TBSBundle::layout.html.twig" %}
 
-{% block mainzone %}
-<div class="col-lg-9 mainzone">
-	{% for sentorder in sentorders %}
-	<article>
-		<header>
-			<h3>Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}">Valider</a></h3> 
-			<h3>Boisson: {{sentorder.pId}}</h3> 
-			<h3>Quantité: {{sentorder.olQtt}} </h3>
-		</header>
-	</article>
-	{% endfor %}
-</div>
+{% block subzone %}
 
-{% endblock mainzone %}
+	{% if (app.user == 'ca') %}
+		<h1>Les commandes</h1>
+		{% for sentorder in sentorders %}
+			Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}" class="useraction">Valider</a><br>
+			Boisson: {{sentorder.pId}}<br>
+			Quantité: {{sentorder.olQtt}}<br>
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock %}

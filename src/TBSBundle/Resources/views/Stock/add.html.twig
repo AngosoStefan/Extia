@@ -1,15 +1,12 @@
 {% extends "TBSBundle::layout.html.twig" %}
 
-{% block mainzone %}
-	<div class="col-lg-9 mainzone">
+{% block subzone %}
 
-		<h1>Ajouter un stock</h1>
+	<h1>Ajouter un stock</h1>
 
 	<form action="{{path("tbs_add_stock") }}" method="post" enctype="multipart/form-data">
 		{{form_widget(form)}}
 		<input type="submit">
 	</form>
-
-</div>
 	
 {% endblock %}

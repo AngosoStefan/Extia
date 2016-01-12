@@ -1,29 +1,28 @@
 {% extends "::base.html.twig" %}
-{% block body %}
-<h1>Passer une commande2</h1>
 
-<h2>Votre panier</h2>
-{% for orderline in orderlines %}
-		<article>
-			<header>
-				<h3>Boisson: {{orderline.pId}}  Quantité: {{orderline.olQtt}} </h3>
-			</header>
-		</article>
-{% endfor %}
+{% block subzone %}
 
+	<h1>Passer une commande2</h1>
 
+	<h2>Votre panier</h2>
+	{% for orderline in orderlines %}
+			<article>
+				<header>
+					<h3>Boisson: {{orderline.pId}}  Quantité: {{orderline.olQtt}} </h3>
+				</header>
+			</article>
+	{% endfor %}
 
-<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
-	
+	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
+		
+		{{ form_widget(form2.olQtt, {'value' : '0'}) }}
+		{{ form_widget(form2.pId) }}
+		{{form_rest(form2)}}
 
-	{{ form_widget(form2.olQtt, {'value' : '0'}) }}
-	{{ form_widget(form2.pId) }}
-	{{form_rest(form2)}}
+		<input type="submit" value = "Ajouter une commande">
+		<input type="submit" name="final" value ="Finaliser la commande">
 
-	<input type="submit" value = "Ajouter une commande">
-	<input type="submit" name="final" value ="Finaliser la commande">
-
-</form>
+	</form>
 
 
 {% endblock %}
