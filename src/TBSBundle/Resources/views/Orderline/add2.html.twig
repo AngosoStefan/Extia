@@ -1,10 +1,10 @@
-{% extends "::base.html.twig" %}
+{% extends "TBSBundle::layout.html.twig" %}
 
 {% block subzone %}
 
-	<h1>Passer une commande2</h1>
+	<h1>Passer une commande</h1>
 
-	<h2>Votre panier</h2>
+	<h3>Votre panier</h3>
 	{% for orderline in orderlines %}
 			<article>
 				<header>
@@ -19,7 +19,7 @@
 		{{ form_widget(form2.pId) }}
 		{{form_rest(form2)}}
 
-		<input type="submit" value = "Ajouter une commande">
+		<input type="submit" value = "Ajouter un autre produit">
 		<input type="submit" name="final" value ="Finaliser la commande">
 
 	</form>
