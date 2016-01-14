@@ -33,6 +33,7 @@ html,body {
   overflow-x:hidden !important;
   background-color: #394147;
   font-family: "extia";
+  font-size: 100%;
 }
 
 [class*="col-"] {
@@ -46,7 +47,7 @@ h1 {
 	font-weight: bold;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	line-height: 120px;
+	line-height: 100px;
 	color: #F26e27;
 }
 
@@ -58,11 +59,11 @@ h1 {
 }
 
 .bandeau {
-	border: solid black 2px;
-	border-bottom: solid black 4px;
-	border-radius: 10px;
+	border: solid black 3px;
+	border-bottom: solid black 8px;
+	border-radius: 50px;
 	background-color: #F26e27;
-	margin:0px;
+	margin-top : 2%;
 }
 
 .mainpic {
@@ -97,12 +98,7 @@ a:hover:visited {
 
 /* Boutons edit, delete */
 
-.useraction:link {
-	color: black;
-	font-weight: bold;
-}
-
-.useraction:visited {
+.useraction {
 	color: black;
 	font-weight: bold;
 }
@@ -111,22 +107,28 @@ a:hover:visited {
 	color: #F26e27;
 }
 
-
 /* Zone du milieu */
 
 .midzone {
-	margin-top: 1%;
+	margin-top: 2%;
 }
 
+/* Menu */
+
+li {
+	line-height: 30px;
+	list-style-type:none;
+	font-size: 1.5em;
+}
 
 /* Zone principale */
 
 .mainzone {
 	background-color: white;
-	height:70%;
-	border: solid black 2px;
-	border-bottom: solid black 4px;
-	border-radius: 10px;
+	border: solid black 3px;
+	border-bottom: solid black 8px;
+	border-radius: 50px;
+	height: 60%;
 	color: #22313F;
 }
 
@@ -134,13 +136,22 @@ a:hover:visited {
 	color: #22313F;
 }
 
+.subzone {
+	overflow:auto;
+	max-height: 90%;
+	margin-top: 2.5%;
+}
 
-/* Gestion des options */
+
+/* Zone des options */
 
 .topoption {
-	line-height: 150px;
-	font-size: 180%;
-}
+	font-size: 200%;
+	margin-top: 10%;
+	margin-bottom: 60px;
+	margin-left: 100px;
+	margin-right: 100px;
+}	
 
 .topoption:hover {
 	color: #F26e27;
@@ -157,66 +168,6 @@ h3 {
 }
 
 
-/* Formulaires menu */
-
-.form_demo input{
-	color:black;
-}
-
-.inputbasic{
-	border: 1px solid grey;
-	border-radius: 2px;
-	padding: 5px;
-	background-position: center;
-	transition: all 1s linear;
-}
-
-.inputbasic:focus{
-	background-color: grey;
-	color: orange;
-}
-
-.user{
-	background-image: url(./assets/user.png);
-	background-repeat: no-repeat;
-	background-position: 2px 5px;
-	background-size: 15px;
-	padding-left: 25px;
-}
-
-.pswd{
-	background-image: url(./assets/password.png);
-	background-repeat: no-repeat;
-	background-position: 2px 5px;
-	background-size: 15px;
-	padding-left: 25px;
-}
-
-.form_demo input[type=submit]{
-	background-color: grey;
-	border: 1px solid orange;
-	padding: 5px;
-	border-radius: 2px;
-	color: orange;
-	transition: all 0.5s ease;
-}
-
-.form_demo input[type=submit]:hover{
-	background-color: darkorange;
-	color: white;
-	border-radius: 150px;
-}
-
-
-/* Menu */
-
-li {
-	line-height: 50px;
-	font-size: 1.3em;
-	list-style-type:none;
-}
-
-
 /* Tableaux */
 
 table {
@@ -224,6 +175,13 @@ table {
 	line-height: 30px;
 	text-align: center;
 	margin: auto;
+	border: solid black 1px;
+}
+
+th, td {
+	border: solid black 1px;
+	width: 1%;
+	text-align: center;
 }
 
 /* Centrer */

@@ -16,7 +16,6 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:index.html.twig');
     }
 
-
     public function addAction(Request $request){
         $p = new Product();
         $form = $this->createForm('TBSBundle\Form\ProductType', $p);
@@ -27,10 +26,7 @@ class ProductController extends Controller
             $em->persist($p);
             $em->flush();   
 
-
             return $this->redirect($this->generateUrl("tbs_index"));
-            
-
         }
        
 

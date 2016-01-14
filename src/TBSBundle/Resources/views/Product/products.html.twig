@@ -8,13 +8,14 @@
 	<tr>
 		<th>Libell&eacute;</th>
 		<th>Qtt unitaire</th>
+		<th>Actions</th>
 	</tr>
 		{% for product in products %}
 		<tr>
 			<td>{{product.PName}}</td>
 			<td>{{product.PUnit}}</td>
-			<td><a href="{{ path("tbs_edit_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-			<td><a href="{{ path("tbs_delete_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-remove"></span></a></td>
+			<td><a href="{{ path("tbs_edit_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a>
+			<a href="{{ path("tbs_delete_product", { id: product.PId}) }}"><span class="glyphicon glyphicon-remove useraction"></span></a>
 			</tr>
 		{% endfor %}
 	</table>

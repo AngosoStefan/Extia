@@ -5,8 +5,40 @@
 	<h1>Ajouter un produit</h1>
 
 	<form action="{{path("tbs_add_product") }}" method="post" enctype="multipart/form-data">
-		{{form_widget(form)}}
-		<input type="submit">
+
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3" >
+				<b>Nom du produit:</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.pName) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3" >
+				<b>Unité:</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.pUnit) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3" >
+				<b>Stock associ&eacute;:</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.sId) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3" >
+				<input type="submit">
+			</div>
+		</div>
+
 	</form>
 
 {% endblock %}

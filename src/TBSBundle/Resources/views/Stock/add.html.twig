@@ -5,8 +5,30 @@
 	<h1>Ajouter un stock</h1>
 
 	<form action="{{path("tbs_add_stock") }}" method="post" enctype="multipart/form-data">
-		{{form_widget(form)}}
-		<input type="submit">
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3" >
+				<b>Nom du stock :</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.sName) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3">
+				<b>Stock total :</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.sTotal)}}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3" >
+				<input type="submit">
+			</div>
+		</div>
+
 	</form>
 	
 {% endblock %}
