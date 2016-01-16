@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use TBSBundle\Entity\Basket; 
+use Symfony\Component\Validator\Constraints as Assert;
 
 class OrderlineType extends AbstractType
 {

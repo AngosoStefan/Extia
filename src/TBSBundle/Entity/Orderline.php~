@@ -3,6 +3,7 @@
 namespace TBSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Orderline
@@ -26,6 +27,12 @@ class Orderline
      * @var int
      *
      * @ORM\Column(name="ol_qtt", type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 10,
+     *      minMessage = "You must be at least {{ limit }}cm tall to enter",
+     *      maxMessage = "You cannot be taller than {{ limit }}cm to enter"
+     * )
      */
     private $olQtt;
 
@@ -140,4 +147,28 @@ class Orderline
 
 
     
+
+    /**
+     * Set test
+     *
+     * @param integer $test
+     *
+     * @return Orderline
+     */
+    public function setTest($test)
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    /**
+     * Get test
+     *
+     * @return integer
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
 }

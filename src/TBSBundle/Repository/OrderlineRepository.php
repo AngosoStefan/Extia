@@ -21,6 +21,17 @@ class OrderlineRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function countOrderlines($bId)
+    {
+        $query = $this->getEntityManager()
+                        ->createQuery("
+	            SELECT COUNT(ol) FROM TBSBundle:Orderline ol WHERE ol.bId = $bId"
+                        );
+        //$query->setParameter('b_id', $bId.'%');
+        return $query->getSingleScalarResult();
+    }
+
+
     
 
 }
