@@ -5,6 +5,7 @@ namespace TBSBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\User;
 use TBSBundle\Entity\Basket;
+use TBSBundle\Entity\Stock;
 
 class DefaultController extends Controller
 {
@@ -16,8 +17,10 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl("tbs_login"));
         }
         $sentorders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+
+        $stocks = $em->getRepository("TBSBundle:Stock")->findAll();
         
-        return $this->render('TBSBundle:Default:index.html.twig',array('sentorders'=>$sentorders));
+        return $this->render('TBSBundle:Default:index.html.twig',array('sentorders'=>$sentorders,'stocks'=>$stocks));
     }
 
     public function indexcaAction(Basket $basket){

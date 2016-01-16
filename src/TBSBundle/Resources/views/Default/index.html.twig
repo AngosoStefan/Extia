@@ -3,6 +3,13 @@
 {% block subzone %}
 
 	{% if (app.user == 'ca') %}
+		<h1>Stocks à recharger</h1>
+		{% for stock in stocks %}
+			{% if stock.sTotal == 0 %}
+				Produit : {{stock.sName}} <a href="{{ path('tbs_edit_stock', {id:stock.sId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a>
+			{% endif %} 
+
+		{% endfor %}
 		<h1>Les commandes</h1>
 		{% for sentorder in sentorders %}
 			Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}" class="useraction">Valider</a><br>
