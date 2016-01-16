@@ -14,9 +14,9 @@
 
 		<li><a href="{{ path('tbs_index') }}">Commandes</a></li>
 		<li><a href="{{ path('tbs_add_stock') }}">Ajouter un stock</a></li>
-		<li><a href="{{ path('tbs_stocks') }}">Modifier un stock</a></li>
+		<li><a href="{{ path('tbs_stocks') }}">Les stocks</a></li>
 		<li><a href="{{ path('tbs_add_product') }}">Ajouter un produit</a></li>
-		<li><a href="{{ path('tbs_products') }}">Modifier un produit</a></li>
+		<li><a href="{{ path('tbs_products') }}">Les produits</a></li>
 
 		{% elseif app.user != null %}
 		<li role="presentation"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Commander</a></li>

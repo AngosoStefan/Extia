@@ -2,12 +2,13 @@
 
 {% block subzone %}
 
-	<h1>Tous les stocks</h1>
+	<h1>Les stocks</h1>
 
 	<table>
 		<tr>
 			<th>Libell&eacute;</th>
-			<th>Qtt totale</th>
+			<th>Quantit&eacute; unitaire</th>
+			<th>Actions</th>
 		</tr>
 		{% for stock in stocks %}
 			<tr>
@@ -15,8 +16,7 @@
 					<header>
 						<td>{{stock.SName}}</td>
 						<td>{{stock.STotal}}</td>
-						<td><a href="{{ path("tbs_edit_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-						<td><a href="{{ path("tbs_delete_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-remove"></span></a></td>
+						<td><a href="{{ path("tbs_edit_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a><a href="{{ path("tbs_delete_stock", { id: stock.SId}) }}"><span class="glyphicon glyphicon-remove useraction"></span></a></td>
 					</header>
 				</article>
 			</tr>

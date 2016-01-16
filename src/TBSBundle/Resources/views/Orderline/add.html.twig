@@ -2,15 +2,39 @@
 
 {% block subzone %}
 
-	<h1>Ajouter un produit</h1>
+<h1>Ajouter un produit</h1>
 
-	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
-		{{form_widget(form2)}}
-
-
-	<input type="submit" value = "Ajouter un autre produit">
-	<input type="submit" name="final" value ="Finaliser la commande">
-
-	</form>
+<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
+	<div class="row">
+		<div class="col-lg-3 col-lg-offset-3">
+			Quanti&eacute;:
+		</div>
+		<div class="col-lg-3">
+			{{ form_widget(form2.olQtt) }}
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-3 col-lg-offset-3">
+			Produit:
+		</div>
+		<div class="col-lg-3">
+			{{ form_widget(form2.pId) }}
+		</div>
+	</div>
+	{{form_rest(form2)}}
+	<br>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3">
+			<input type="submit" value="Ajouter un autre produit">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3">
+			<input type="submit" name="final" value="Finaliser la commande">
+		</div>
+	</div>
+</form>
 
 {% endblock %}

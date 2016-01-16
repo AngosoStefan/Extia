@@ -18,11 +18,11 @@ class BasketType extends AbstractType
         $builder
             ->add('bFloor',ChoiceType::class, array(
                     'choices' => array(
-                    '4th' => '4',
-                    '5th' => '5'
+                    '4e' => '4',
+                    '6e' => '6'
                 ),
                 'required'    => true,
-                'placeholder' => 'Choose your floor',
+                'placeholder' => 'Quel étage ?',
                 'empty_data'  => null
                 ))
             ->add('bRoom')

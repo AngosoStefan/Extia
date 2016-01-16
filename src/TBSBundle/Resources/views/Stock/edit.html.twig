@@ -2,11 +2,34 @@
 
 {% block subzone %}
 
-	<h1>Editer un produit</h1>
+	<h1>Editer un stock</h1>
 
 	<form action="{{path("tbs_edit_stock", { id: stock.SId}) }}" method="post" enctype="multipart/form-data">
-		{{form_widget(form)}}
-		<input type="submit">
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3" >
+				<b>Nom du stock :</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.sName) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3">
+				<b>Stock total :</b>
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form.sTotal)}}
+
+			</div>
+		</div>
+		{{form_rest(form)}}
+		<br>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3" >
+				<input type="submit">
+			</div>
+		</div>
 	</form>
 
 {% endblock %}
