@@ -25,7 +25,7 @@ class BasketType extends AbstractType
                 'placeholder' => 'Quel étage ?',
                 'empty_data'  => null
                 ))
-            ->add('bRoom')
+            ->add('lId')
             //->add('bDate', 'datetime')
             //->add('bStatus')
             //->add('id')

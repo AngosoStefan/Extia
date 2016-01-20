@@ -27,12 +27,6 @@ class Orderline
      * @var int
      *
      * @ORM\Column(name="ol_qtt", type="integer")
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 10,
-     *      minMessage = "You must be at least {{ limit }}cm tall to enter",
-     *      maxMessage = "You cannot be taller than {{ limit }}cm to enter"
-     * )
      */
     private $olQtt;
 

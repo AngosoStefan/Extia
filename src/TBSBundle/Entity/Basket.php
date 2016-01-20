@@ -35,15 +35,10 @@ class Basket
     /**
      * @var int
      *
-     * @ORM\Column(name="b_room", type="integer")
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 4,
-     *      minMessage = "Veuillez insérer un nombre supérieur à 0",
-     *      maxMessage = "Veuillez insérer un nombre inférieur à 5"
-     * )
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(name="l_id", referencedColumnName="l_id", onDelete="CASCADE")
      */
-    private $bRoom;
+    private $lId;
 
     /**
      * @var int
@@ -157,29 +152,7 @@ class Basket
         return $this->bId;
     }
 
-    /**
-     * Set bRoom
-     *
-     * @param integer $bRoom
-     *
-     * @return Basket
-     */
-    public function setBRoom($bRoom)
-    {
-        $this->bRoom = $bRoom;
-
-        return $this;
-    }
-
-    /**
-     * Get bRoom
-     *
-     * @return integer
-     */
-    public function getBRoom()
-    {
-        return $this->bRoom;
-    }
+    
 
     /**
      * Set id
@@ -208,5 +181,29 @@ class Basket
     public function __toString()
     {
         return (string) $this->getBId();
+    }
+
+    /**
+     * Set lId
+     *
+     * @param \TBSBundle\Entity\Location $lId
+     *
+     * @return Basket
+     */
+    public function setLId(\TBSBundle\Entity\Location $lId = null)
+    {
+        $this->lId = $lId;
+
+        return $this;
+    }
+
+    /**
+     * Get lId
+     *
+     * @return \TBSBundle\Entity\Location
+     */
+    public function getLId()
+    {
+        return $this->lId;
     }
 }

@@ -3,6 +3,8 @@
 namespace TBSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Basket
@@ -33,9 +35,10 @@ class Basket
     /**
      * @var int
      *
-     * @ORM\Column(name="b_room", type="integer")
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(name="l_id", referencedColumnName="l_id", onDelete="CASCADE")
      */
-    private $bRoom;
+    private $lId;
 
     /**
      * @var int
@@ -149,29 +152,7 @@ class Basket
         return $this->bId;
     }
 
-    /**
-     * Set bRoom
-     *
-     * @param integer $bRoom
-     *
-     * @return Basket
-     */
-    public function setBRoom($bRoom)
-    {
-        $this->bRoom = $bRoom;
-
-        return $this;
-    }
-
-    /**
-     * Get bRoom
-     *
-     * @return integer
-     */
-    public function getBRoom()
-    {
-        return $this->bRoom;
-    }
+    
 
     /**
      * Set id
