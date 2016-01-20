@@ -22,11 +22,20 @@ class OrderlineController extends Controller
         $count = 0;
 
 
-        //$count = $em->getRepository("TBSBundle:Orderline")->countOrderlines($basket->getBId());
-        //echo $count;
+        $ols = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
+
+        foreach ($ols as $ol) {
+            // $advert est une instance de Advert
+            $count = ($count) + ($ol->getOlQtt());
+            // echo $count;
+        }
+        $count = $count + $o->getOlQtt();
+
 
         if(isset($_POST['final']))
         {
+
+            
             
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
 
@@ -38,9 +47,21 @@ class OrderlineController extends Controller
 
                 $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
 
+
+
                 $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
 
+                if($count>4  || $new_stock < 0 )
+                {
+                    $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
+                    echo "We cant process your order";
+                    return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+
+                }
+
                 $stock->setSTotal($new_stock);
+
+
 
                 $o->setTest($stock->getSId());
 
@@ -72,23 +93,9 @@ class OrderlineController extends Controller
             //echo $count;
 
 
-            $ols = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
+            
 
-            foreach ($ols as $ol) {
-                // $advert est une instance de Advert
-                $count = ($count) + ($ol->getOlQtt());
-                // echo $count;
-            }
-            $count = $count + $o->getOlQtt();
-
-            if($count>4 || ($o->getOlQtt() == 0))
-            {
-                $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
-                echo "We cant process your order";
-                return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
-
-            }
-
+            
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
 
             $test = $o->getPId();
@@ -98,6 +105,15 @@ class OrderlineController extends Controller
             $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
 
             $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
+
+            if($count>4 || ($o->getOlQtt() == 0) || $new_stock < 0)
+            {
+                $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
+                echo "We cant process your order";
+                return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+
+            }
+
 
             $stock->setSTotal($new_stock);
 

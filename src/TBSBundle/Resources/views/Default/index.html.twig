@@ -11,11 +11,27 @@
 
 		{% endfor %}
 		<h1>Les commandes</h1>
-		{% for sentorder in sentorders %}
-			Numéro de commmande: {{sentorder.bId}} <a href="{{ path('tbs_indexca', {id:sentorder.bId}) }}" class="useraction">Valider</a><br>
-			Boisson: {{sentorder.pId}}<br>
-			Quantité: {{sentorder.olQtt}}<br>
+		
+
+
+
+		{% for basket in baskets %}
+			{% if basket.bStatus == "sent" %}
+				Numéro de commmande: {{basket.bId}} <a href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a><br>
+				{% for order in orders %}
+					{% if order.bId.__toString() == basket.bId %}
+						Boisson: {{order.pId}}<br>
+						Quantité: {{order.olQtt}}<br>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
 		{% endfor %}
+
+
+
+
+
+
 
 	{% endif %}
 

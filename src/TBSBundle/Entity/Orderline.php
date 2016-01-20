@@ -27,12 +27,6 @@ class Orderline
      * @var int
      *
      * @ORM\Column(name="ol_qtt", type="integer")
-     * @Assert\Range(
-     *      min = 0,
-     *      max = 4,
-     *      minMessage = "Veuillez insérer un nombre supérieur à 0",
-     *      maxMessage = "Veuillez insérer un nombre inférieur à 5"
-     * )
      */
     private $olQtt;
 

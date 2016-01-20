@@ -3,6 +3,8 @@
 namespace TBSBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Basket
@@ -34,6 +36,12 @@ class Basket
      * @var int
      *
      * @ORM\Column(name="b_room", type="integer")
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 4,
+     *      minMessage = "Veuillez insérer un nombre supérieur à 0",
+     *      maxMessage = "Veuillez insérer un nombre inférieur à 5"
+     * )
      */
     private $bRoom;
 

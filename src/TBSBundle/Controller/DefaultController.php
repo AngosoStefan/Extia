@@ -16,11 +16,12 @@ class DefaultController extends Controller
         {
             return $this->redirect($this->generateUrl("tbs_login"));
         }
-        $sentorders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+        $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
 
         $stocks = $em->getRepository("TBSBundle:Stock")->findAll();
+        $baskets = $em->getRepository("TBSBundle:Basket")->findAll();
         
-        return $this->render('TBSBundle:Default:index.html.twig',array('sentorders'=>$sentorders,'stocks'=>$stocks));
+        return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
     }
 
     public function indexcaAction(Basket $basket){
