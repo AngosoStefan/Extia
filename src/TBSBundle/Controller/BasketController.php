@@ -6,9 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\Basket;
 use TBSBundle\Entity\Orderline;
 use TBSBundle\Entity\User;
+use TBSBundle\Entity\Location;
 use TBSBundle\Form\BasketType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 
 class BasketController extends Controller
 {
@@ -27,6 +29,8 @@ class BasketController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $locations = $em->getRepository("TBSBundle:Location")->findAll();
+
             //echo $form['bFloor']->getData();
             $b->setId($em->getRepository("TBSBundle:User")->find($user->getId()));
             $b->setBStatus('filling');
@@ -35,7 +39,7 @@ class BasketController extends Controller
             $em->flush();   
             //echo $b->getBId();
 
-            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b ,));
+            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b ,'locations'=>$locations));
 
         }
        

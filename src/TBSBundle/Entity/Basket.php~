@@ -182,4 +182,28 @@ class Basket
     {
         return (string) $this->getBId();
     }
+
+    /**
+     * Set lId
+     *
+     * @param \TBSBundle\Entity\Location $lId
+     *
+     * @return Basket
+     */
+    public function setLId(\TBSBundle\Entity\Location $lId = null)
+    {
+        $this->lId = $lId;
+
+        return $this;
+    }
+
+    /**
+     * Get lId
+     *
+     * @return \TBSBundle\Entity\Location
+     */
+    public function getLId()
+    {
+        return $this->lId;
+    }
 }

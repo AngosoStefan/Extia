@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\User;
 use TBSBundle\Entity\Basket;
 use TBSBundle\Entity\Stock;
-use TBSBundle\Entity\Location;
 
 class DefaultController extends Controller
 {
@@ -19,12 +18,10 @@ class DefaultController extends Controller
         }
         $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
 
-        $stocks = $em->getRepository("TBSBundle:Stock")->findAll();
-        $baskets = $em->getRepository("TBSBundle:Basket")->findAll();
+        $stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
+        $baskets = $em->getRepository("TBSBundle:Basket")->findByBStatus('sent');
 
-        $locations = $em->getRepository("TBSBundle:Location")->findAll();
-        
-        return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets,'locations'=>$locations));
+        return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
     }
 
     public function indexcaAction(Basket $basket){
@@ -33,7 +30,12 @@ class DefaultController extends Controller
         $basket->setBStatus('ongoing');
         $em->persist($basket);
         $em->flush();
-        //return $this->redirect($this->generateUrl("tbs_index"));
+        return $this->redirect($this->generateUrl("tbs_index"));
+        //return $this->render('TBSBundle:Default:simple.html.twig');
+    }
+
+    public function rosAction(){
+        
         return $this->render('TBSBundle:Default:simple.html.twig');
     }
 

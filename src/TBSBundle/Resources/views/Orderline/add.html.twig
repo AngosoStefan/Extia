@@ -2,6 +2,11 @@
 
 {% block subzone %}
 
+<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ asset('js/javascript.js')}}"></script>
+
 <h1>Ajouter un produit</h1>
 
 <form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
@@ -32,7 +37,21 @@
 	<br>
 	<div class="row">
 		<div class="col-lg-6 col-lg-offset-3">
-			<input type="submit" name="final" value="Finaliser la commande">
+			{% for location in locations %}
+
+					{% if location.lName == basket.lId.__toString() %}
+
+							
+						<input type='hidden' id='posx' value={{location.lX}}> </input> 
+
+						<input type='hidden' id='posy' value={{location.lY}}> </input>
+
+						<input type='hidden' id='name' value={{basket.Id}}> </input>
+
+					{% endif %}	
+
+			{% endfor %}
+			<input id="command" type="submit" name="final" value="Finaliser la commande">
 		</div>
 	</div>
 </form>

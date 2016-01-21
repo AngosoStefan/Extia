@@ -5,6 +5,7 @@ namespace TBSBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TBSBundle\Entity\Orderline; 
 use TBSBundle\Entity\Basket; 
+use TBSBundle\Entity\Location;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,6 +24,7 @@ class OrderlineController extends Controller
 
 
         $ols = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
+        $locations = $em->getRepository("TBSBundle:Location")->findAll();
 
         foreach ($ols as $ol) {
             // $advert est une instance de Advert
@@ -55,7 +57,7 @@ class OrderlineController extends Controller
                 {
                     $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                     echo "We cant process your order";
-                    return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+                    return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
 
                 }
 
@@ -110,7 +112,7 @@ class OrderlineController extends Controller
             {
                 $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                 echo "We cant process your order";
-                return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+                return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
 
             }
 
@@ -131,14 +133,15 @@ class OrderlineController extends Controller
 
             $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
             // Si le bouton valider est appuyé
-            return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+            return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations
+                ));
             
             // Si le bouton nouvelle ligne est appuyé
             // return $this->redirect($this->generateUrl("tbs_add_orderline"));
         }
         
 
-        return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket));
+        return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket,'locations'=>$locations));
     }
 
 

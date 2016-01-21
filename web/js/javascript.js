@@ -1,13 +1,5 @@
-/*$(document).ready(function(){
-
-	$('#command2').click(function(){
-		var posx = $('#pos_y').val();
-		alert(posx);
-	});
-
-});*/
 var ros = new ROSLIB.Ros({
-			    url : 'ws://192.168.150.5:9090'
+			    url : 'ws://192.168.43.79:9090'
 			  });
 			  ros.on('connection', function() {
 			    console.log('Connected to websocket server.');
@@ -124,10 +116,21 @@ function load_waiting_list(){
   });
 }
 
-
-
+function request_page(){
+	var pub = new ROSLIB.Topic({
+			    ros : ros,
+			    name : 'request_page',
+			    messageType : 'std_msgs/Int8'
+			  });
+		var pressed = new ROSLIB.Message({
+			    data : 1
+			  });
+			  pub.publish(pressed);
+}
 
 $(document).ready(function(){
+
+	request_page();
 
 	// Subscribing to a Topic
   // ----------------------
@@ -146,13 +149,12 @@ $(document).ready(function(){
   });
 
 
-	$('#command2').click(function(){
-		alert("YEAAH");
+	$('#command').click(function(){
 		var client_name = $('#name').val();
-		var posx = $('#pos_x').val();
-		var posy = $('#pos_y').val();
+		var posx = $('#posx').val();
+		var posy = $('#posy').val();
+		alert(client_name);
 
-		alert(posx);
 		if(client_name==''||posx==''||posy==''){
 			return ;
 		}
