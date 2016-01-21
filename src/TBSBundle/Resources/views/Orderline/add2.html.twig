@@ -8,22 +8,37 @@
 	<script src="{{ asset('js/javascript.js')}}"></script>
 
 	<h1>Passer une commande</h1>
-
-	<h3>Votre panier</h3>
+	<table>		
+		<h2>Votre panier</h2>
 	{% for orderline in orderlines %}
-			<article>
-				<header>
-					<h3>Produit: {{orderline.pId}} Quantité: {{orderline.olQtt}} </h3>
-				</header>
-			</article>
+			<td>
+				{{orderline.olQtt}} x {{orderline.pId}}</h3>
+			</td>
 	{% endfor %}
-
+		</tr>
+	</table>
+	<br>
 	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
-		
-		{{ form_widget(form2.olQtt, {'value' : '0'}) }}
-		{{ form_widget(form2.pId) }}
-		{{form_rest(form2)}}
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3">
+				Quantit&eacute;:
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form2.olQtt, {'value' : '0'}) }}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-3 col-lg-offset-3">
+				Produit :
+			</div>
+			<div class="col-lg-3">
+				{{ form_widget(form2.pId) }}
+			</div>
+		</div>
 
+		{{form_rest(form2)}}
+		<br>
 		<input type="submit" value = "Ajouter un autre produit">
 		{% for location in locations %}
 

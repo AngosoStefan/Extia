@@ -16,32 +16,32 @@
 		{% endfor %}
 		<h1>Les commandes</h1>
 		
-
-
-		
 			{% for basket in baskets %}
-		
-				Numéro de commmande: {{basket.bId}} <a id="validate_drink" href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a><br>
-
-				<br>
-
+				<table>
+				<tr>	
+					<th>
+						Numéro de commmande: {{basket.bId}}
+					</th>
 
 				{% for order in orders %}
 					{% if order.bId.__toString() == basket.bId %}
-						Boisson: {{order.pId}}<br>
-						Quantité: {{order.olQtt}}<br>
+						<td>{{order.olQtt}} X {{order.pId}}</td>
 					{% endif %}
 				{% endfor %}
+				
+				<td><a id="validate_drink" href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a></td>
+				</tr>
+
+				</table>
+				<br>
 			
 			{% endfor %}
 
-		
 
-
-
-
-
-
+	{% endif %}
+	{% if (app.user != 'admin') %}
+		<h2>Bienvenue dans l'espace utilisateur</h2>
+		<br>
 	{% endif %}
 
 {% endblock %}

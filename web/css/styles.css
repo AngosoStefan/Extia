@@ -34,27 +34,25 @@ html,body {
   background-color: #394147;
   font-family: "extia";
   font-size: 100%;
+  margin:0px;
+
 }
 
 [class*="col-"] {
   font-family: Calibri;
   text-align: center;
+  padding:0px;
 }
 
 /* Titre principal */
 
 h1 {
 	font-weight: bold;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	line-height: 100px;
 	color: #F26e27;
 }
 
 .register {
 	font-weight: bold;
-	margin-top: 0px;
-	margin-bottom: 0px;
 	color: #394147;
 }
 
@@ -128,7 +126,6 @@ li {
 	border: solid black 3px;
 	border-bottom: solid black 8px;
 	border-radius: 50px;
-	height: 60%;
 	color: #22313F;
 }
 
@@ -137,9 +134,6 @@ li {
 }
 
 .subzone {
-	overflow:auto;
-	max-height: 90%;
-	margin-top: 2.5%;
 }
 
 
@@ -171,7 +165,6 @@ h3 {
 /* Tableaux */
 
 table {
-	border: solid white 1px;
 	line-height: 30px;
 	text-align: center;
 	margin: auto;
