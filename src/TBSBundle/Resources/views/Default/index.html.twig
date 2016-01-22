@@ -29,7 +29,11 @@
 					{% endif %}
 				{% endfor %}
 				
-				<td><a id="validate_drink" href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a></td>
+				<!--<td><a id="validate_drink" href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a></td>-->
+					<td><form action="{{ path('tbs_indexca', {id:basket.bId}) }}" method="post" enctype="multipart/form-data">
+						<input id="validate_drink2" type="submit"/>
+					</form></td>
+				<!--<button id="validate_drink2" class="button"></button>-->
 				</tr>
 
 				</table>
@@ -38,10 +42,6 @@
 			{% endfor %}
 
 
-	{% endif %}
-	{% if (app.user != 'admin') %}
-		<h2>Bienvenue dans l'espace utilisateur</h2>
-		<br>
 	{% endif %}
 
 {% endblock %}

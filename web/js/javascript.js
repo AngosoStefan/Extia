@@ -1,5 +1,5 @@
 var ros = new ROSLIB.Ros({
-			    url : 'ws://192.168.43.79:9090'
+			    url : 'ws://192.168.150.4:9090'
 			  });
 			  ros.on('connection', function() {
 			    console.log('Connected to websocket server.');
@@ -134,9 +134,10 @@ $(document).ready(function(){
 
 	// Subscribing to a Topic
   // ----------------------
-  load_waiting_list();
-  
-  $('#validate_drink').click(function(){
+  //load_waiting_list();
+
+  $('#validate_drink2').click(function(){
+
   		var pub = new ROSLIB.Topic({
 			    ros : ros,
 			    name : 'valid_pressed',
@@ -153,7 +154,7 @@ $(document).ready(function(){
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
-		alert(client_name);
+		alert(client_name+posx+posy);
 
 		if(client_name==''||posx==''||posy==''){
 			return ;
