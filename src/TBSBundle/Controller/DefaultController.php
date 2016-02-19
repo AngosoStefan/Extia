@@ -86,15 +86,11 @@ class DefaultController extends Controller
             $ols = $em->getRepository("TBSBundle:Orderline")->findByPId($boisson->getPId());
             $count = 0;
             foreach ($ols as $ol) {
-
-                    $count = ($count) + ($ol->getOlQtt());
-
+                $count = ($count) + ($ol->getOlQtt());
             }
-
             array_push($stat_array,array($boisson->getPName(),$count));
-            
         }
-        print_r ($stat_array);
+        return $this->render('TBSBundle:Default:stats.html.twig',array('stat_array'=>$stat_array));
     }
 
 

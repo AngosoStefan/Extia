@@ -2,26 +2,19 @@
 
 {% block subzone %}
 
-{% for basket in baskets %}
-
 <br>
-<h2>Classement des produits les plus commandés</h2>
+<h2>Tableau des produits commandés</h2>
 <br>
-
 	<table>
-		<tr>	
-
-		{% for order in orders %}
-			{% if order.bId.__toString() == basket.bId %}
-				<td>{{order.olQtt}} X {{order.pId}}</td>
-			{% endif %}
-		{% endfor %}
-		</tr>
+	{% for stringsById in stat_array %}	
+  		<tr>
+  			{% for string in stringsById %}
+    			<td>{{ string }} </td>
+  			{% endfor %}
+  		</tr>
+	{% endfor %}
 	</table>
-
 <br>
-		
-{% endfor %}
 
 {% endblock subzone %}
 
