@@ -51,7 +51,7 @@ class DefaultController extends Controller
         $em->remove($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl("tbs_homepage"));
+        return $this->redirect($this->generateUrl("tbs_index"));
      }
 
      public function editUserAction(User $user){
@@ -72,6 +72,19 @@ class DefaultController extends Controller
         return $this->render('ABSBlogBundle:Celebrity:edit.html.twig',array('form'=> $form->createView(), 'celebrity'=> $celebrity,));
     }
 
+
+    public function statsAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+
+        $baskets = $em->getRepository("TBSBundle:Basket")->findByBStatus('done');
+
+        $array = array(1, 1, 1, 1,  1, 8 => 1,  4 => 1, 19, 3 => 13);
+        print_r($array);
+        
+        //return $this->render('TBSBundle:Default:stats.html.twig',array('orders'=>$orders,'baskets'=>$baskets));
+    }
 
 
 }

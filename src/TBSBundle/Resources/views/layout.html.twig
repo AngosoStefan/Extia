@@ -45,8 +45,8 @@
 
 	{% if app.user != null %}
 	<div class="row">
-		<a href="{{path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
-		<span class="glyphicon glyphicon-stats topoption" style="color:white;"></span>
+		<a href="{{ path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
+		<a href="{{ path('tbs_stats')}}"><span class="glyphicon glyphicon-stats topoption"></span></a>
 		<a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
 	</div>
 

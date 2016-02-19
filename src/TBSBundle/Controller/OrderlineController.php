@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class OrderlineController extends Controller
 {
-
      public function addInOrderlineAction(Request $request, Basket $basket){
 
         // Boucle d'ajout de ligne
@@ -36,8 +35,6 @@ class OrderlineController extends Controller
 
         if(isset($_POST['final']))
         {
-
-            
             
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
 
@@ -49,8 +46,6 @@ class OrderlineController extends Controller
 
                 $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
 
-
-
                 $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
 
                 if($count>4  || $new_stock < 0 )
@@ -58,12 +53,9 @@ class OrderlineController extends Controller
                     $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                     echo "We cant process your order";
                     return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
-
                 }
 
                 $stock->setSTotal($new_stock);
-
-
 
                 $o->setTest($stock->getSId());
 
@@ -71,8 +63,6 @@ class OrderlineController extends Controller
                 $em->persist($o);
                 $em->persist($stock);
             }
-
-            
 
             // Finalisation de la commande
             $basket->setBStatus('sent');
@@ -84,19 +74,11 @@ class OrderlineController extends Controller
         }
         if ($form2->isSubmitted() && $form2->isValid()) {    
 
-
-
-
-
             $em = $this->getDoctrine()->getManager();
              
 
             //$count = $em->getRepository("TBSBundle:Orderline")->countOrderlines($basket->getBId());
             //echo $count;
-
-
-            
-
             
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
 

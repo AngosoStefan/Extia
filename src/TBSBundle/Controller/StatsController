@@ -1,0 +1,19 @@
+<?php
+
+namespace TBSBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use TBSBundle\Entity\User;
+use TBSBundle\Entity\Basket;
+use TBSBundle\Entity\Stock;
+
+class StatsController extends Controller
+{
+    public function statsAction(){
+        $em = $this->getDoctrine()->getManager();
+        
+
+        return $this->render('TBSBundle:Default:index.html.twig');
+}
+
+?>

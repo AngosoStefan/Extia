@@ -1,0 +1,50 @@
+{% extends "TBSBundle::layout.html.twig" %}
+
+{% block subzone %}
+
+{% for basket in baskets %}
+
+<br>
+<h2>Classement des produits les plus commandés</h2>
+<br>
+
+	<table>
+		<tr>	
+
+		{% for order in orders %}
+			{% if order.bId.__toString() == basket.bId %}
+				<td>{{order.olQtt}} X {{order.pId}}</td>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	</table>
+
+<br>
+		
+{% endfor %}
+
+{% endblock subzone %}
+
+{% block options %}
+
+	<div class="col-lg-2">
+
+		{% if app.user != null %}
+
+		<div class="row">
+			<a href="{{ path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
+			<a href="{{ path('tbs_stats')}}"><span class="glyphicon glyphicon-stats topoption"></span></a>
+			<a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
+		</div>
+
+		{% endif %}
+
+	</div>
+
+{% endblock options %}
+
+{% block footer %}
+    <div class="row footer">
+
+    </div>
+{% endblock footer %}
