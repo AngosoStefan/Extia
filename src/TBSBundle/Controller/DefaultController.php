@@ -74,16 +74,27 @@ class DefaultController extends Controller
 
 
     public function statsAction() {
+
         $em = $this->getDoctrine()->getManager();
 
-        $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+        $boissons = $em->getRepository("TBSBundle:Product")->findAll();
 
-        $baskets = $em->getRepository("TBSBundle:Basket")->findByBStatus('done');
+        $stat_array = array();
 
-        $array = array(1, 1, 1, 1,  1, 8 => 1,  4 => 1, 19, 3 => 13);
-        print_r($array);
-        
-        //return $this->render('TBSBundle:Default:stats.html.twig',array('orders'=>$orders,'baskets'=>$baskets));
+        foreach ($boissons as $boisson) {
+
+            $ols = $em->getRepository("TBSBundle:Orderline")->findByPId($boisson->getPId());
+            $count = 0;
+            foreach ($ols as $ol) {
+
+                    $count = ($count) + ($ol->getOlQtt());
+
+            }
+
+            array_push($stat_array,array($boisson->getPName(),$count));
+            
+        }
+        print_r ($stat_array);
     }
 
 

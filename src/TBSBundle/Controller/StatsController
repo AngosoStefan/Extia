@@ -11,6 +11,25 @@ class StatsController extends Controller
 {
     public function statsAction(){
         $em = $this->getDoctrine()->getManager();
+
+        $boissons = $em->getRepository("TBSBundle:Product")->findAll();
+
+        $stat_array = array();
+
+        foreach ($boissons as $boisson) {
+
+	       	$ols = $em->getRepository("TBSBundle:Orderline")->findByPId($boisson->getPId());
+	       	$count = 0;
+	       	foreach ($ols as $ol) {
+
+	       			$count = ($count) + ($ol->getOlQtt());
+	       	}
+
+	       	$stat_array = array_push($stat_array,array($boisson->getPId(),count));
+			print_r ($stat_array);
+	        
+
+        }
         
 
         return $this->render('TBSBundle:Default:index.html.twig');
