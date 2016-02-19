@@ -21,4 +21,14 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function countUsers()
+    {
+        $query = $this->getEntityManager()
+                        ->createQuery("
+	            SELECT COUNT(user) FROM TBSBundle:User user"
+                        );
+        
+        return $query->getSingleScalarResult();
+    }
+
 }

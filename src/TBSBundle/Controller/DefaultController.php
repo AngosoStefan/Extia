@@ -76,6 +76,7 @@ class DefaultController extends Controller
     public function statsAction() {
 
         $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $boissons = $em->getRepository("TBSBundle:Product")->findAll();
 
@@ -90,7 +91,10 @@ class DefaultController extends Controller
             }
             array_push($stat_array,array($boisson->getPName(),$count));
         }
-        return $this->render('TBSBundle:Default:stats.html.twig',array('stat_array'=>$stat_array));
+
+        $nb_clients = $em->getRepository("TBSBundle:User")->countUsers();
+
+        return $this->render('TBSBundle:Default:stats.html.twig',array('stat_array'=>$stat_array,'nb_clients'=>$nb_clients));
     }
 
 
