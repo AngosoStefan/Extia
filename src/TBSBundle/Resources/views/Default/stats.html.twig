@@ -2,6 +2,61 @@
 
 {% block subzone %}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="{{ asset('jqplot/jquery.min.js')}}"></script>
+
+<script src="{{ asset('jqplot/jquery.jqplot.min.js')}}"></script>
+
+
+<link href="{{ asset('jqplot/jquery.jqplot.css') }}" rel="stylesheet">
+
+<script src="{{ asset('jqplot/plugins/jqplot.pieRenderer.js')}}"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){ 
+    
+    var plot8 = $.jqplot('pie8', [{{stat_array|json_encode|raw}}], {
+        grid: {
+            drawBorder: false, 
+            drawGridlines: false,
+            background: '#ffffff',
+            shadow:false
+        },
+        axesDefaults: {
+             
+        },
+        seriesDefaults:{
+            renderer:$.jqplot.PieRenderer,
+            rendererOptions: {
+                showDataLabels: true
+            }
+        },
+        legend: {
+            show: true,
+            rendererOptions: {
+                numberRows: 1
+            },
+            location: 's'
+        }
+    }); 
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 <br>
 <h2>Tableau des produits commandés</h2>
 <br>
@@ -14,9 +69,15 @@
   		</tr>
 	{% endfor %}
 	</table>
+
+	
 <br>
 
+
+<div id="pie8"></div>
+
 {% endblock subzone %}
+
 
 {% block options %}
 
