@@ -182,3 +182,31 @@ th, td {
 .center_h {
 	text-align: center;
 }
+
+#btn1{
+	position:absolute;
+	top:29%;
+	left:24%;
+	border-radius:50%;
+	width:20px;
+	height:20px;
+	background: linear-gradient(#f7f7f7, #e7e7e7);
+	border:none;
+	outline:none;
+	font: 18px Tahoma bold;
+	color: #A7A7A7;
+}
+
+#btn2{
+	position:absolute;
+	top:29%;
+	left:33%;
+	border-radius:50%;
+	width:20px;
+	height:20px;
+	background: linear-gradient(#f7f7f7, #e7e7e7);
+	border:none;
+	outline:none;
+	font: 18px Tahoma bold;
+	color: #A7A7A7;
+}

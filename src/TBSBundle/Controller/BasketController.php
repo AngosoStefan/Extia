@@ -27,19 +27,22 @@ class BasketController extends Controller
         $form2->handleRequest($request);
 
 
+        if (isset($_POST['lfinal'])) {
+             $location = $_POST['lfinal'];
+             echo $location;
+        }
+
+
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $locations = $em->getRepository("TBSBundle:Location")->findAll();
-
-            //echo $form['bFloor']->getData();
+            /*$b->setLId($location);
             $b->setId($em->getRepository("TBSBundle:User")->find($user->getId()));
             $b->setBStatus('filling');
             $em = $this->getDoctrine()->getManager();
             $em->persist($b);
             $em->flush();   
-            //echo $b->getBId();
-
-            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b ,'locations'=>$locations));
+*/
+            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b ));
 
         }
        

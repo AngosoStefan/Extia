@@ -37,19 +37,7 @@
 		<br>
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-				{% for location in locations %}
-
-						{% if location.lName == basket.lId.__toString() %}
-								
-							<input type='hidden' id='posx' value={{location.lX}}> </input> 
-
-							<input type='hidden' id='posy' value={{location.lY}}> </input>
-
-							<input type='hidden' id='name' value={{basket.Id}}> </input>
-
-						{% endif %}	
-
-				{% endfor %}
+				<input type='hidden' id='name' value={{basket.Id}}> </input>
 				<input id="command" type="submit" name="final" value="Finaliser la commande">
 			</div>
 		</div>

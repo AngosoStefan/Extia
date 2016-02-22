@@ -1,6 +1,8 @@
 {% extends "TBSBundle::layout.html.twig" %}
 
 {% block subzone %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="{{ asset('js/buttons.js')}}"></script>
 
 	<div class="maincontent">
 		<h1>Passer une commande</h1>
@@ -19,11 +21,28 @@
 				<div class="col-lg-3 col-lg-offset-3">
 					Salle:
 				</div>
-				<div class="col-lg-3">
-					{{ form_widget(form.lId) }}
+				<div class="col-lg-12">
+					<br><br>
+					<div>
+						<!-- Ensemble des boutons statiques -->
+
+						<button id="btn1">1</button>
+						<input name='l1' type='hidden' id='l1' value=1> </input>
+
+						<button id="btn2">2</button>
+						<input name='l2' type='hidden' id='l2' value=2> </input>
+						
+						<!-- Image avec points cliquables -->
+
+						<img width="100%" alt="slideshow formation" src="{{ asset('assets/plan.jpg')}}" >
+
+						<!-- Coordonnées finales -->
+
+						<input name='lfinal' type='hidden' id='lfinal' value=2 ></input>
+					</div>
 				</div>
 			</div>
-			{{form_rest(form)}}
+			<!--{{form_rest(form)}}-->
 			<br>
 			<div class="row">
 				<div class="col-lg-6 col-lg-offset-3" >
