@@ -11,7 +11,7 @@
 	{% if (app.user == 'ca') %}
 		<h1>Stocks à recharger</h1>
 		{% for stock in stocks %}
-				Produit : {{stock.sName}} <a href="{{ path('tbs_edit_stock', {id:stock.sId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a>
+			Produit : {{stock.sName}} <a href="{{ path('tbs_edit_stock', {id:stock.sId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a>
 		{% endfor %}
 		<br>
 		<h1>Les commandes</h1>
@@ -44,7 +44,7 @@
 	{% elseif app.user=='admin' %}
 		
 	{% else %}
-		Vous n'avez pas de commande en attente
+		
 	{% endif %}
 
 {% endblock %}

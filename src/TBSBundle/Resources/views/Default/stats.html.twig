@@ -17,7 +17,7 @@
 <script type="text/javascript">
 
 $(document).ready(function(){ 
-    
+
     var plot8 = $.jqplot('pie8', [{{stat_array|json_encode|raw}}], {
         grid: {
             drawBorder: false, 
@@ -26,7 +26,7 @@ $(document).ready(function(){
             shadow:false
         },
         axesDefaults: {
-             
+
         },
         seriesDefaults:{
             renderer:$.jqplot.PieRenderer,
@@ -46,59 +46,52 @@ $(document).ready(function(){
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
+{% if app.user == 'ca' %}
 
 <br>
 <h2>Tableau des produits commandés</h2>
 <br>
-	<table>
+<table>
 	{% for stringsById in stat_array %}	
-  		<tr>
-  			{% for string in stringsById %}
-    			<td>{{ string }} </td>
-  			{% endfor %}
-  		</tr>
-	{% endfor %}
-	</table>
+    <tr>
+       {% for string in stringsById %}
+       <td>{{ string }} </td>
+       {% endfor %}
+   </tr>
+   {% endfor %}
+</table>
 
-	
+
 <br>
 
 
 <div id="pie8"></div>
+
+{% endif %}
 
 {% endblock subzone %}
 
 
 {% block options %}
 
-	<div class="col-lg-2">
+<div class="col-lg-2">
 
-		{% if app.user != null %}
+  {% if app.user != null %}
 
-		<div class="row">
-			<a href="{{ path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
-			<a href="{{ path('tbs_stats')}}"><span class="glyphicon glyphicon-stats topoption"></span></a>
-			<a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
-		</div>
+  <div class="row">
+     <a href="{{ path('fos_user_profile_edit')}}"><span class="glyphicon glyphicon-user topoption"></span></a>
+     <a href="{{ path('tbs_stats')}}"><span class="glyphicon glyphicon-stats topoption"></span></a>
+     <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off topoption"></span></a>
+ </div>
 
-		{% endif %}
+ {% endif %}
 
-	</div>
+</div>
 
 {% endblock options %}
 
 {% block footer %}
-    <div class="row footer">
+<div class="row footer">
 
-    </div>
+</div>
 {% endblock footer %}
