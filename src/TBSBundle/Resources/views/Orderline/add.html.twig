@@ -10,7 +10,11 @@
 				Quantit&eacute;:
 			</div>
 			<div class="col-lg-3">
-				{{ form_widget(form2.olQtt) }}
+				{# {{ form_widget(form2.olQtt) }} #}
+
+				{{ form_widget(form2.olQtt, { 'id': 'nb_item' }) }}
+
+				{# <input type="number" id="form2_olQtt" name="form2[olQtt]" /> #}
 
 			</div>
 		</div>
@@ -40,9 +44,11 @@
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
-						<input type='hidden' id='nb_item' value={{ form2.vars.value.olQtt }}>
+						<input type='hidden' id='count' value=0>
 
-						{# {{ form2.vars.value.olQtt }} #}
+						{# <input type="hidden" id='nb_item' value={{form2.olQtt.vars.value}}> #}
+
+						{{ form2.vars.value.olQtt }}
 
 					{% endif %}	
 

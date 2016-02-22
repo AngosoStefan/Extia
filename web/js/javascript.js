@@ -153,12 +153,14 @@ $(document).ready(function(){
 
 
 	$('#command').click(function(){
-		alert('je suis dans command');
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
 
-		var nb_item = $('#nb_item').val();
+		var nb_item_form = parseInt($('#nb_item').val(), 10);
+		var nb_item_past = parseInt($('#count').val(), 10);
+		var nb_item = nb_item_form + nb_item_past;
+
 		alert(nb_item);
 
 		if(client_name==''||posx==''||posy==''||nb_item==''){

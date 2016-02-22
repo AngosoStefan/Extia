@@ -15,7 +15,6 @@
 				{% set count = count + orderline.olQtt %}
 				{{orderline.olQtt}}
 				{{count}}
-				{{ form2.vars.value.olQtt }}
 			</td>
 	{% endfor %}
 		</tr>
@@ -27,7 +26,7 @@
 				Quantit&eacute;:
 			</div>
 			<div class="col-lg-3">
-				{{ form_widget(form2.olQtt, {'value' : '0'}) }}
+				{{ form_widget(form2.olQtt, {'id': 'nb_item','value' : '0'}) }}
 			</div>
 		</div>
 		<br>
@@ -50,10 +49,11 @@
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
-						<input type='hidden' id='nb_item' value={{ form2.vars.value.olQtt }} + {{count}} >
+						<input type='hidden' id='count' value={{count}}>
 
-						{% set foo = form2.vars.value.olQtt + count %}
-						{{ foo }}
+						{# {% set foo = form2.vars.value.olQtt + count %}
+						{{ foo }} #}
+						
 
 					{% endif %}	
 
