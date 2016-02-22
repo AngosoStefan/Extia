@@ -31,6 +31,14 @@ class OrderlineRepository extends \Doctrine\ORM\EntityRepository
         return $query->getSingleScalarResult();
     }
 
+    public function findOrderlinesbyId($Id)
+    {
+        $query = $this->getEntityManager()
+                        ->createQuery("
+                SELECT ol FROM TBSBundle:Orderline ol, TBSBundle:Basket b WHERE ol.bId = b.bId AND b.id = $Id"
+                        );
+        return $query->getResult();
+    }
 
     
 

@@ -81,21 +81,60 @@ class DefaultController extends Controller
         $boissons = $em->getRepository("TBSBundle:Product")->findAll();
 
         $stat_array = array();
+        //echo $user;
+        if($user== 'ca')
+        {
 
-        foreach ($boissons as $boisson) {
+            foreach ($boissons as $boisson) {
 
-            $ols = $em->getRepository("TBSBundle:Orderline")->findByPId($boisson->getPId());
-            $count = 0;
-            foreach ($ols as $ol) {
-                $count = ($count) + ($ol->getOlQtt());
+                $ols = $em->getRepository("TBSBundle:Orderline")->findByPId($boisson->getPId());
+                $count = 0;
+                foreach ($ols as $ol) {
+                    $count = ($count) + ($ol->getOlQtt());
+                }
+                array_push($stat_array,array($boisson->getPName(),$count));
             }
-            array_push($stat_array,array($boisson->getPName(),$count));
+
+        }
+
+
+
+
+        if($user!= 'ca' && $user != 'admin')
+        {
+            echo $user;
+            $ols= $em->getRepository("TBSBundle:Orderline")->findOrderlinesbyId($user->getId());
+
+            foreach ($boissons as $boisson) {
+
+                $count = 0;
+
+                foreach ($ols as $ol) {
+                    if($ol->getPId() == $boisson->getPName())
+                    {
+                        $count = ($count) + ($ol->getOlQtt());
+                    }
+                    
+                }
+                array_push($stat_array,array($boisson->getPName(),$count));
+            }
+
+           
+
         }
 
         $nb_clients = $em->getRepository("TBSBundle:User")->countUsers();
+
 
         return $this->render('TBSBundle:Default:stats.html.twig',array('stat_array'=>$stat_array,'nb_clients'=>$nb_clients));
     }
 
 
+    
+
+
+
 }
+
+
+
