@@ -183,30 +183,34 @@ th, td {
 	text-align: center;
 }
 
-#btn1{
-	position:absolute;
-	top:29%;
-	left:24%;
+.btn {
 	border-radius:50%;
 	width:20px;
 	height:20px;
-	background: linear-gradient(#f7f7f7, #e7e7e7);
-	border:none;
-	outline:none;
+	border: none;
 	font: 18px Tahoma bold;
-	color: #A7A7A7;
+	color: red;
+	background-color: white;
+}
+
+#btn1{
+	position:absolute;
+	top:28.5%;
+	left:23%;
 }
 
 #btn2{
 	position:absolute;
-	top:29%;
-	left:33%;
-	border-radius:50%;
-	width:20px;
-	height:20px;
-	background: linear-gradient(#f7f7f7, #e7e7e7);
-	border:none;
-	outline:none;
-	font: 18px Tahoma bold;
-	color: #A7A7A7;
+	top:28.5%;
+	left:45%;
+}
+
+#btn3{
+	position:absolute;
+	top:55%;
+	left:26%;
+}
+
+.test:hover{
+	color:red;
 }
