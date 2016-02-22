@@ -1,6 +1,6 @@
 var l = "localhost";
 var r = "192.168.150.10"
-// alert('hey');
+
 var ros = new ROSLIB.Ros({
 			    url : 'ws://'+r+':9090'
 			  });
@@ -153,10 +153,13 @@ $(document).ready(function(){
 
 
 	$('#command').click(function(){
+		alert('je suis dans command');
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
+
 		var nb_item = $('#nb_item').val();
+		alert(nb_item);
 
 		if(client_name==''||posx==''||posy==''||nb_item==''){
 			return ;

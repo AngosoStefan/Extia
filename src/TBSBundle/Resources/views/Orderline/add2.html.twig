@@ -2,17 +2,20 @@
 
 {% block subzone %}
 	
-	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-	<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="{{ asset('js/javascript.js')}}"></script>
-
 	<h1>Passer une commande</h1>
 	<table>		
 		<h2>Votre panier</h2>
+
+		{% set count = 0 %}
+
 	{% for orderline in orderlines %}
 			<td>
 				{{orderline.olQtt}} x {{orderline.pId}}</h3>
+
+				{% set count = count + orderline.olQtt %}
+				{{orderline.olQtt}}
+				{{count}}
+				{{ form2.vars.value.olQtt }}
 			</td>
 	{% endfor %}
 		</tr>
@@ -47,6 +50,10 @@
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
+						<input type='hidden' id='nb_item' value={{ form2.vars.value.olQtt }} + {{count}} >
+
+						{% set foo = form2.vars.value.olQtt + count %}
+						{{ foo }}
 
 					{% endif %}	
 

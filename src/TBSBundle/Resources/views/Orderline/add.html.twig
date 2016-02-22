@@ -2,11 +2,6 @@
 
 {% block subzone %}
 
-	<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-	<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="{{ asset('js/javascript.js')}}"></script>
-
 	<h1>Ajouter un produit</h1>
 
 	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
@@ -16,6 +11,7 @@
 			</div>
 			<div class="col-lg-3">
 				{{ form_widget(form2.olQtt) }}
+
 			</div>
 		</div>
 		<br>
@@ -44,6 +40,9 @@
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
+						<input type='hidden' id='nb_item' value={{ form2.vars.value.olQtt }}>
+
+						{# {{ form2.vars.value.olQtt }} #}
 
 					{% endif %}	
 
