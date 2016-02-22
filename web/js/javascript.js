@@ -1,5 +1,8 @@
+var l = "localhost";
+var r = "192.168.150.10"
+// alert('hey');
 var ros = new ROSLIB.Ros({
-			    url : 'ws://192.168.150.4:9090'
+			    url : 'ws://'+r+':9090'
 			  });
 			  ros.on('connection', function() {
 			    console.log('Connected to websocket server.');
@@ -15,7 +18,7 @@ var ros = new ROSLIB.Ros({
 			  });
 
 			  ros.on('close', function() {
-			    console.log('Connection to websocket server closed.');
+			    console.log('Connection to websocket server closed e.');
 			    $('#result').text('Connection Closed');
 			    $('#result').css("color","orange");
 			  });
@@ -107,7 +110,7 @@ function load_waiting_list(){
     }
     for(i=0;i<message.clients.length;i++){
     	string_html+="<p>";
-    	string_html+=message.clients[i].client_name;
+    	string_html+=message.clients[i].client_name+"  x="+message.clients[i].posx+"   y"+message.clients[i].posy+"   nb_item="+message.clients[i].nb_item;
     	string_html+="</p>";
     }
     string_html+="</div>";
@@ -134,10 +137,9 @@ $(document).ready(function(){
 
 	// Subscribing to a Topic
   // ----------------------
-  //load_waiting_list();
-
-  $('#validate_drink2').click(function(){
-
+  load_waiting_list();
+  
+  $('#validate_drink').click(function(){
   		var pub = new ROSLIB.Topic({
 			    ros : ros,
 			    name : 'valid_pressed',
@@ -154,9 +156,9 @@ $(document).ready(function(){
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
-		alert(client_name+posx+posy);
+		var nb_item = $('#nb_item').val();
 
-		if(client_name==''||posx==''||posy==''){
+		if(client_name==''||posx==''||posy==''||nb_item==''){
 			return ;
 		}
 		var cmdClient = new ROSLIB.Topic({
@@ -167,7 +169,8 @@ $(document).ready(function(){
 		var client = new ROSLIB.Message({
 			    client_name : client_name.toString(),
 			      posx : parseFloat(posx.toString()),
-			      posy : parseFloat(posy.toString())
+			      posy : parseFloat(posy.toString()),
+			      nb_item : parseInt(nb_item.toString())
 			  });
 			  cmdClient.publish(client);
 	});
