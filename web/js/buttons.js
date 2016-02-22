@@ -19,4 +19,13 @@ $(document).ready(function(){
 
     });
 
+    $("#btn3").click(function(e){
+        e.preventDefault();
+
+        var l3 = $('#l3').val();
+
+        $('#lfinal').val(l3);
+
+    });
+
 });
