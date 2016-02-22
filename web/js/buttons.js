@@ -6,12 +6,8 @@ $(document).ready(function(){
 
         var l1 = $('#l1').val();
         
-
 		$('#lfinal').val(l1);
 
-		var lf = $('#lfinal').val();
-
-		alert(lf);
     });
 
 	$("#btn2").click(function(e){
@@ -21,9 +17,6 @@ $(document).ready(function(){
 
 		$('#lfinal').val(l2);
 
-		var lf = $('#lfinal').val();
-
-		alert(lf);
     });
 
 });
