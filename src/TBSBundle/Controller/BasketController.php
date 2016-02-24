@@ -28,6 +28,8 @@ class BasketController extends Controller
 
         $locations = $em->getRepository("TBSBundle:Location")->findAll();
 
+        $orderlines = NULL;
+
         /* On combine un formulaire symfony et un formulaire fait main 
         On ne peut donc pas utiliser isValid() pour la validation du formulaire, on le test à la main */
 
@@ -46,7 +48,7 @@ class BasketController extends Controller
             $em->persist($b);
             $em->flush();   
 
-            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b, 'locations'=> $locations ));
+            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $b, 'locations'=> $locations,'orderlines'=> $orderlines ));
         }
        
 

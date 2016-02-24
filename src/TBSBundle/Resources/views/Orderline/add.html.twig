@@ -2,7 +2,26 @@
 
 {% block subzone %}
 
-	<h1>Ajouter un produit</h1>
+	{# <h1>Ajouter un produit</h1> #}
+
+	<h1>Passer une commande</h1>
+	<table>		
+	<h2>Votre panier</h2>
+
+	{% set count = 0 %}
+	{% if orderlines != NULL %}
+		{% for orderline in orderlines %}
+				<td>
+					{{orderline.olQtt}} x {{orderline.pId}}</h3>
+
+					{% set count = count + orderline.olQtt %}
+					
+				</td>
+		{% endfor %}
+	{% endif %}
+		</tr>
+	
+	</table>
 
 	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
 		<div class="row">
@@ -10,11 +29,8 @@
 				Quantit&eacute;:
 			</div>
 			<div class="col-lg-3">
-				{# {{ form_widget(form2.olQtt) }} #}
-
-				{{ form_widget(form2.olQtt, { 'id': 'nb_item' }) }}
-
-				{# <input type="number" id="form2_olQtt" name="form2[olQtt]" /> #}
+				
+				{{ form_widget(form2.olQtt, { 'id': 'nb_item','value' : '0' }) }}
 
 			</div>
 		</div>
@@ -44,15 +60,12 @@
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
-						<input type='hidden' id='count' value=0>
-
-						{# <input type="hidden" id='nb_item' value={{form2.olQtt.vars.value}}> #}
-
-						{{ form2.vars.value.olQtt }}
+						<input type='hidden' id='count' value={{count}}>
 
 					{% endif %}	
 
 				{% endfor %}
+
 				<input id="command" type="submit" name="final" value="Finaliser la commande">
 			</div>
 		</div>

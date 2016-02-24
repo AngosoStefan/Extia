@@ -52,14 +52,11 @@ class OrderlineController extends Controller
                 {
                     $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                     echo "We cant process your order";
-                    return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
+                    return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
                 }
 
                 $stock->setSTotal($new_stock);
 
-                $o->setTest($stock->getSId());
-
-                
                 $em->persist($o);
                 $em->persist($stock);
             }
@@ -94,14 +91,13 @@ class OrderlineController extends Controller
             {
                 $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                 echo "We cant process your order";
-                return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
+                return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
 
             }
 
 
             $stock->setSTotal($new_stock);
 
-            $o->setTest($stock->getSId());
 
             
             $em->persist($o);
@@ -115,7 +111,7 @@ class OrderlineController extends Controller
 
             $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
             // Si le bouton valider est appuyé
-            return $this->render('TBSBundle:Orderline:add2.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations
+            return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations
                 ));
             
             // Si le bouton nouvelle ligne est appuyé
