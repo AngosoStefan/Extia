@@ -150,7 +150,6 @@ $(document).ready(function(){
 			    state : 1
 			  });
 			  pub.publish(pressed);
-			  alert('hi');
   });
 
 
@@ -158,6 +157,7 @@ $(document).ready(function(){
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
+		alert(posy);
 
 		var nb_item_form = parseInt($('#nb_item').val());
 		var nb_item_past = parseInt($('#count').val());
