@@ -31,6 +31,13 @@
 			<div class="col-lg-3">
 				{{form_errors(form2.olQtt)}}
 				{{ form_widget(form2.olQtt, { 'id': 'nb_item','value' : null }) }}
+				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
+					<h8>Quantité doit être inférieure à 5</h8>
+				{% endif %}	
+				{% if form2.vars.value.olQtt <= 0 and form2.vars.value.olQtt != null %}
+					<h8>Quantité doit être supérieure à 0</h8>
+				{% endif %}
+
 
 			</div>
 		</div>

@@ -69,6 +69,8 @@ class OrderlineController extends Controller
             return $this->redirect($this->generateUrl("tbs_index"));
 
         }
+        
+
         if ($form2->isSubmitted() && $form2->isValid()) {    
 
             $em = $this->getDoctrine()->getManager();
@@ -87,7 +89,7 @@ class OrderlineController extends Controller
 
             $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
 
-            if($count>4 || ($o->getOlQtt() == 0) || $new_stock < 0)
+            if($count>4 || ($o->getOlQtt() <= 0) || $new_stock < 0)
             {
                 $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
                 echo "We cant process your order";
