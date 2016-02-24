@@ -17,7 +17,7 @@
 		<h1>Les commandes</h1>
 		
 			<div id="list">
-				{% set bId = -1 %}
+				{% set bId = 0 %}
 
 				{% for basket in baskets %}
 				<table>
@@ -33,19 +33,24 @@
 						{% endfor %}
 						
 						{% set bId = basket.bId %}
+
+
 					</tr>
 
 				</table>
 				<br>
 			{% endfor %}
-			
-			</div>
 
-			{% if (bId != -1) %}
+			{% if (bId != 0 ) %}
+
 				<form action="{{ path('tbs_indexca', {id:bId}) }}" method="post" enctype="multipart/form-data">
 					<input id="validate_drink" type="submit"/>
 				</form>
 			{% endif %}
+			
+			</div>
+			
+			
 
 			<script type="text/javascript">
 				var auto_refresh = setInterval(
