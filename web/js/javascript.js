@@ -161,8 +161,6 @@ $(document).ready(function(){
 		var nb_item_past = parseInt($('#count').val());
 		var nb_item = nb_item_form + nb_item_past;
 
-		alert(nb_item);
-
 		if(client_name==''||posx==''||posy==''||nb_item==''){
 			return ;
 		}

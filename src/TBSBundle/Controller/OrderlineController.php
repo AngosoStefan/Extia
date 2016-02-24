@@ -40,9 +40,9 @@ class OrderlineController extends Controller
 
             if($o->getOlQtt() != 0)
             {
-                $test = $o->getPId();
+                $pid = $o->getPId();
 
-                $product = $em->getRepository("TBSBundle:Product")->findOneByPId($test);
+                $product = $em->getRepository("TBSBundle:Product")->findOneByPId($pid);
 
                 $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
 
@@ -81,9 +81,9 @@ class OrderlineController extends Controller
             
             $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
 
-            $test = $o->getPId();
+            $pid = $o->getPId();
 
-            $product = $em->getRepository("TBSBundle:Product")->findOneByPId($test);
+            $product = $em->getRepository("TBSBundle:Product")->findOneByPId($pid);
 
             $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
 
@@ -100,8 +100,6 @@ class OrderlineController extends Controller
 
             $stock->setSTotal($new_stock);
 
-
-            
             $em->persist($o);
             $em->persist($stock);
 

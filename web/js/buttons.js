@@ -8,6 +8,7 @@ $(document).ready(function(){
         
 		$('#lfinal').val(l1);
 
+        $('#room').text(l1);
     });
 
 	$("#btn2").click(function(e){
@@ -17,6 +18,7 @@ $(document).ready(function(){
 
 		$('#lfinal').val(l2);
 
+        $('#room').text(l2);
     });
 
     $("#btn3").click(function(e){
@@ -25,6 +27,8 @@ $(document).ready(function(){
         var l3 = $('#l3').val();
 
         $('#lfinal').val(l3);
+
+        $('#room').text(l3);
 
     });
 

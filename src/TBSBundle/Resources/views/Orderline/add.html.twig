@@ -7,7 +7,7 @@
 	<h1>Passer une commande</h1>
 	<table>		
 	<h2>Votre panier</h2>
-
+	<br>
 	{% set count = 0 %}
 	{% if orderlines != NULL %}
 		{% for orderline in orderlines %}
@@ -22,15 +22,15 @@
 		</tr>
 	
 	</table>
-
+	<br>
 	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-3 col-lg-offset-3">
 				Quantit&eacute;:
 			</div>
 			<div class="col-lg-3">
-				{{form_errors(form2.olQtt)}}
 				{{ form_widget(form2.olQtt, { 'id': 'nb_item','value' : null }) }}
+<<<<<<< HEAD
 				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
 					<h8>Quantité doit être inférieure à 5</h8>
 				{% endif %}	
@@ -39,6 +39,8 @@
 				{% endif %}
 
 
+=======
+>>>>>>> origin/master
 			</div>
 		</div>
 		<br>
