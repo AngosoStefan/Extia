@@ -1,5 +1,5 @@
 var l = "localhost";
-var r = "192.168.150.10"
+var r = "192.168.150.9"
 
 var ros = new ROSLIB.Ros({
 			    url : 'ws://'+r+':9090'
@@ -157,8 +157,8 @@ $(document).ready(function(){
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
 
-		var nb_item_form = parseInt($('#nb_item').val(), 10);
-		var nb_item_past = parseInt($('#count').val(), 10);
+		var nb_item_form = parseInt($('#nb_item').val());
+		var nb_item_past = parseInt($('#count').val());
 		var nb_item = nb_item_form + nb_item_past;
 
 		alert(nb_item);

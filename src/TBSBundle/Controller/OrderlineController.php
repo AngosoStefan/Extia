@@ -114,8 +114,6 @@ class OrderlineController extends Controller
             return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations
                 ));
             
-            // Si le bouton nouvelle ligne est appuyé
-            // return $this->redirect($this->generateUrl("tbs_add_orderline"));
         }
         
 

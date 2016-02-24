@@ -41,8 +41,8 @@ class Orderline
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumn(name="p_id", referencedColumnName="p_id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Product",cascade={"persist"})
+     * @ORM\JoinColumn(name="p_id", referencedColumnName="p_id", nullable=false)
      */
     private $pId;
 
