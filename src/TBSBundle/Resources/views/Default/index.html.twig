@@ -17,31 +17,33 @@
 		<h1>Les commandes</h1>
 		
 			<div id="list">
+				{% set bId = 0 %}
+
 				{% for basket in baskets %}
-			<table>
-				<tr>	
-					<th>
-						Numéro de commmande: {{basket.bId}}
-					</th>
+				<table>
+					<tr>	
+						<th>
+							Numéro de commande: {{basket.bId}}
+						</th>
 
-					{% for order in orders %}
-					{% if order.bId.__toString() == basket.bId %}
-					<td>{{order.olQtt}} X {{order.pId}}</td>
-					{% endif %}
-					{% endfor %}
-					
-					<!--<td><a id="validate_drink" href="{{ path('tbs_indexca', {id:basket.bId}) }}"><span class="useraction">Valider</span></a></td>-->
-					<td><form action="{{ path('tbs_indexca', {id:basket.bId}) }}" method="post" enctype="multipart/form-data">
-						<input id="validate_drink2" type="submit"/>
-					</form></td>
-					<!--<button id="validate_drink2" class="button"></button>-->
-				</tr>
+						{% for order in orders %}
+							{% if order.bId.__toString() == basket.bId %}
+								<td>{{order.olQtt}} X {{order.pId}}</td>
+							{% endif %}
+						{% endfor %}
+						
+						{% set bId = basket.bId %}
+					</tr>
 
-			</table>
-			<br>
-
+				</table>
+				<br>
 			{% endfor %}
+			
 			</div>
+
+			<form action="{{ path('tbs_indexca', {id:bId}) }}" method="post" enctype="multipart/form-data">
+				<input id="validate_drink" type="submit"/>
+			</form>
 
 			<script type="text/javascript">
 				var auto_refresh = setInterval(

@@ -19,13 +19,15 @@ class DefaultController extends Controller
         $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
 
         $stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
-        $baskets = $em->getRepository("TBSBundle:Basket")->findByBStatus('sent');
+        $baskets = $em->getRepository("TBSBundle:Basket")->findBy(array('bStatus' => 'sent'), array('bId' => 'desc'));
 
         return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
     }
 
-    public function indexcaAction(Basket $basket){
+    public function indexcaAction($id){
         $em = $this->getDoctrine()->getManager();
+        
+        $basket = $em->getRepository("TBSBundle:Basket")->find($id);
         
         $basket->setBStatus('ongoing');
         $em->persist($basket);
