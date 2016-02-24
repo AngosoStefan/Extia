@@ -142,13 +142,15 @@ $(document).ready(function(){
   $('#validate_drink').click(function(){
   		var pub = new ROSLIB.Topic({
 			    ros : ros,
-			    name : 'valid_pressed',
-			    messageType : 'std_msgs/Int8'
+			    name : '/mobile_base/events/button',
+			    messageType : 'kobuki_msgs/ButtonEvent'
 			  });
 		var pressed = new ROSLIB.Message({
-			    data : 1
+			    button : 2,
+			    state : 1
 			  });
 			  pub.publish(pressed);
+			  alert('hi');
   });
 
 
