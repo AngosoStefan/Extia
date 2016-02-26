@@ -55,8 +55,52 @@
 		
 	{% else %}
 		
-	{% endif %}
+		<!-- Si l'utilisateur a déjà passé commande -->
 
-	
+		{% if userBaskets != NULL %}
+
+			<!-- On check sa liste de commandes -->
+
+			{% for userBasket in userBaskets %}
+
+				<!-- On affiche les états envoyés ou en cours de livraison -->
+
+				{% if (userBasket.bStatus == 'sent') or (userBasket.bStatus == 'ongoing') %}
+
+					<h2>Commandes envoyées</h2>
+					<br>
+					<table>
+						<tr>	
+							<th>
+								Numéro de commande: {{userBasket.bId}}
+							</th>
+
+							{% for order in orders %}
+								{% if order.bId.__toString() == userBasket.bId %}
+									<td>{{order.olQtt}} X {{order.pId}}</td>
+								{% endif %}
+							{% endfor %}
+
+							<th>
+								Etat :
+								{% if userBasket.bStatus == 'sent' %}
+									Envoyée
+								{% elseif userBasket.bStatus == 'ongoing' %}
+									En cours de livraison
+								{% endif %}
+
+							</th>
+						</tr>
+
+					</table>
+					<br>
+					<a href="{{ path('tbs_received_basket', {id:userBasket.bId}) }}"><p class="useraction">Confirmation</p></a>
+
+				{% endif %}
+
+			{% endfor %}
+
+		{% endif %}
+	{% endif %}
 
 {% endblock %}

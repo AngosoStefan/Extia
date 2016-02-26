@@ -83,4 +83,17 @@ class BasketController extends Controller
 
     }
 
+    public function doneAction(Basket $basket) {
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+
+        $basket->setBStatus('done');
+        $em->persist($basket);
+        $em->flush();   
+
+
+        return $this->redirect($this->generateUrl("tbs_index"));
+    }
+
 }

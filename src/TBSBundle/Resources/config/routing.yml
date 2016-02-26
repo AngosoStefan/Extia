@@ -85,3 +85,7 @@ tbs_delete_orderline:
 tbs_confirmed_basket:
     path:     /{id}/validbasket
     defaults: { _controller: TBSBundle:Basket:confirm }
+
+tbs_received_basket:
+    path:     /{id}/receivedbasket
+    defaults: { _controller: TBSBundle:Basket:done }

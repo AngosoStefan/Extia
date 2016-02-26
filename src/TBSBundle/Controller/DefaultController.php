@@ -12,16 +12,34 @@ class DefaultController extends Controller
     public function indexAction(){
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        if($user== 'anon.')
+
+        if ($user == 'ca')
+        {
+            /* Ensemble des commandes reçues par le ca */
+            $baskets = $em->getRepository("TBSBundle:Basket")->findBy(array('bStatus' => 'sent'), array('bId' => 'desc'));
+            $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+
+            /* Stocks à 0 */
+            $stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
+            return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
+        }
+        elseif ($user == 'admin')
+        {
+
+        }
+        elseif ($user == 'anon.')
         {
             return $this->redirect($this->generateUrl("tbs_login"));
         }
-        $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
+        else {
+            /* Toutes les commandes d'un client*/
+            $userBaskets = $em->getRepository("TBSBundle:Basket")->findBy(array('id' => $user->getId()));
+            $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();
 
-        $stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
-        $baskets = $em->getRepository("TBSBundle:Basket")->findBy(array('bStatus' => 'sent'), array('bId' => 'desc'));
+            return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'userBaskets'=>$userBaskets));
+        }
 
-        return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
+        
     }
 
     public function indexcaAction($id){
@@ -100,8 +118,6 @@ class DefaultController extends Controller
         }
 
 
-
-
         if($user!= 'ca' && $user != 'admin')
         {
             echo $user;
@@ -127,9 +143,9 @@ class DefaultController extends Controller
 
         $nb_clients = $em->getRepository("TBSBundle:User")->countUsers();
 
-
         return $this->render('TBSBundle:Default:stats.html.twig',array('stat_array'=>$stat_array,'nb_clients'=>$nb_clients));
     }
+
 
 
     
