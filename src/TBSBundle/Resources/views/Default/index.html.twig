@@ -14,7 +14,7 @@
 				{% set bId = 0 %}
 
 				{% for basket in baskets %}
-				<table>
+				<table class="widetable">
 					<tr>	
 						<th>
 							Numéro de commande: {{basket.bId}}
@@ -71,7 +71,7 @@
 					{% set nb_lines = nb_lines + 1  %}
 					<h2>Commandes envoyées</h2>
 					<br>
-					<table>
+					<table class="widetable">
 						<tr>	
 							<th>
 								Numéro de commande: {{userBasket.bId}}

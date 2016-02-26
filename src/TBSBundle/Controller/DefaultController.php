@@ -25,7 +25,7 @@ class DefaultController extends Controller
         }
         elseif ($user == 'admin')
         {
-
+            return $this->render('TBSBundle:Default:index.html.twig');
         }
         elseif ($user == 'anon.')
         {
@@ -120,7 +120,6 @@ class DefaultController extends Controller
 
         if($user!= 'ca' && $user != 'admin')
         {
-            echo $user;
             $ols= $em->getRepository("TBSBundle:Orderline")->findOrderlinesbyId($user->getId());
 
             foreach ($boissons as $boisson) {

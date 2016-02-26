@@ -44,14 +44,13 @@ $(document).ready(function(){
     }); 
 });
 
-
 </script>
-{# {% if app.user == 'ca' %} #}
+{% if app.user != 'admin' %}
 
 <br>
 <h2>Tableau des produits commandés</h2>
 <br>
-<table>
+<table class="widetable">
 	{% for stringsById in stat_array %}	
     <tr>
        {% for string in stringsById %}
@@ -64,10 +63,9 @@ $(document).ready(function(){
 
 <br>
 
-
 <div id="pie8"></div>
 
-{# {% endif %} #}
+{% endif %}
 
 {% endblock subzone %}
 
