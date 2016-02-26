@@ -19,6 +19,7 @@
 		<li><a href="{{ path('tbs_products') }}">Les produits</a></li>
 
 		{% elseif app.user != null %}
+		<li><a href="{{ path('tbs_index') }}">Etat de commande</a></li>
 		<li role="presentation"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Commander</a></li>
 		{% endif %}
 	</ul>
