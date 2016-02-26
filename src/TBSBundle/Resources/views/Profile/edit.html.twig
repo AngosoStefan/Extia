@@ -5,8 +5,9 @@
 	<h1>Mon compte</h1>
 
 	{% block fos_user_content %}
-	<a class="useraction" href="{{ path("fos_user_change_password") }}">Changer le mot de passe</a>
 	{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
 	{% endblock fos_user_content %}
+
+	<a href="{{ path("fos_user_change_password") }}"><span class="useraction">Changer de mot de passe</span></a>
 
 {% endblock %}

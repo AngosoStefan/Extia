@@ -3,33 +3,32 @@
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
   
     <div class="row">
-		<div class="col-lg-offset-1 col-lg-2 justify" >
+		<div class="col-lg-offset-2 col-lg-4 justify" >
 			<b>Pseudo:</b>
 		</div>
-		<div class="col-lg-8 justify" >
+		<div class="col-lg-4 justify" >
 			{{ form_widget(form.username) }}
 		</div>
 	</div>
 	<br>	
     <div class="row">
-		<div class="col-lg-offset-1 col-lg-2 justify" >
+		<div class="col-lg-offset-2 col-lg-4 justify" >
 			<b>Email:</b>
 		</div>
-		<div class="col-lg-8 justify" >
+		<div class="col-lg-4 justify" >
 			{{ form_widget(form.email) }}
 		</div>
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-lg-offset-1 col-lg-2 justify" >
+		<div class="col-lg-offset-2 col-lg-4 justify" >
 			<b>Mdp actuel:</b>
 		</div>
-		<div class="col-lg-8 justify" >
+		<div class="col-lg-4 justify" >
 			{{ form_widget(form.current_password) }}
 		</div>
 	</div>
 	
-
 	<br>
     <div>
         <input type="submit" value="Enregistrer" />
