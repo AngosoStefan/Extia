@@ -4,25 +4,35 @@
 
 <div class="col-lg-2">
 	
-	<ul class="nav nav-pills nav-stacked">
+	<div class="row">
 
 		{% if app.user == 'admin' %}
 
-		<li role="presentation"><a href="{{ path('tbs_delete_list_user') }}">Supprimer un client</a></li>
+		<a href="{{ path('tbs_delete_list_user') }}"><span class="glyphicon glyphicon-search leftoption"></span></a>
 
 		{% elseif app.user == 'ca' %}
 
-		<li><a href="{{ path('tbs_index') }}">Commandes</a></li>
-		<li><a href="{{ path('tbs_add_stock') }}">Ajouter un stock</a></li>
-		<li><a href="{{ path('tbs_stocks') }}">Les stocks</a></li>
-		<li><a href="{{ path('tbs_add_product') }}">Ajouter un produit</a></li>
-		<li><a href="{{ path('tbs_products') }}">Les produits</a></li>
+		<div class="leftoption">
+			<a href="{{ path('tbs_index') }}"><span class="glyphicon glyphicon-list-alt"></span></a>
+		</div>
+
+		<div class="leftoption">
+			<a href="{{ path('tbs_stocks') }}"><span class="glyphicon glyphicon glyphicon-qrcode"></span></a>
+			<a href="{{ path('tbs_add_stock') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
+		</div>
+
+		<div class="leftoption">
+			<a href="{{ path('tbs_products') }}"><span class="glyphicon glyphicon-glass"></span></a>
+			<a href="{{ path('tbs_add_product') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
+		</div>
 
 		{% elseif app.user != null %}
-		<li><a href="{{ path('tbs_index') }}">Etat de commande</a></li>
-		<li role="presentation"><a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}">Commander</a></li>
+		
+		<a href="{{ path('tbs_index') }}"><span class="glyphicon glyphicon-home leftoption"></span></a>
+		<a href="{{ path('tbs_add_basket',{ id: app.user.id}) }}"><span class="glyphicon glyphicon-shopping-cart leftoption"></span></a>
+
 		{% endif %}
-	</ul>
+	</div>
 </div>
 
 {% endblock menu %}
@@ -32,7 +42,6 @@
 <div class="col-lg-8 mainzone">
 	<div class="subzone col-lg-10 col-lg-offset-1">
 	{% block subzone %}
-
 
 	{% endblock %}
 	</div>

@@ -127,6 +127,7 @@ li {
 	border-bottom: solid black 8px;
 	border-radius: 50px;
 	color: #22313F;
+	padding-bottom: 30px;
 }
 
 .mainzone table {
@@ -145,7 +146,15 @@ li {
 	margin-bottom: 60px;
 	margin-left: 100px;
 	margin-right: 100px;
-}	
+}
+
+.leftoption {
+	font-size: 200%;
+	margin-top: 10%;
+	margin-bottom: 60px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
 
 .topoption:hover {
 	color: #F26e27;

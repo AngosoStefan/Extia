@@ -37,9 +37,14 @@
 					{% endif %}	
 
 				{% endfor %}
-
-				<a id='command' href="{{ path("tbs_confirmed_basket", { id: basket.BId}) }}">Finaliser la commande</a>
-				<a href="{{ path("tbs_delete_basket", { id: basket.BId}) }}">Annuler la commande</a>
+				<div class="row">
+					<div class="col-lg-5 col-lg-offset-1">
+						<a href="{{ path("tbs_delete_basket", { id: basket.BId}) }}"><span class="useraction">Annuler la commande</span></a>
+					</div>
+					<div class="col-lg-5">	
+						<a id='command' href="{{ path("tbs_confirmed_basket", { id: basket.BId}) }}"><span class="useraction">Finaliser la commande</span></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>

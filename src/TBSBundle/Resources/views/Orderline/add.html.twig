@@ -13,7 +13,7 @@
 		{% for orderline in orderlines %}
 				<td>
 					{{orderline.olQtt}} x {{orderline.pId}} <a href="{{ path("tbs_delete_orderline", { id: orderline.OlId}) }}">
-					<span class="glyphicon glyphicon-remove useraction"></span></a> </h3>
+					<span class="glyphicon glyphicon-trash useraction"></span></a> </h3>
 
 					{% set count = count + orderline.olQtt %}
 				</td>
