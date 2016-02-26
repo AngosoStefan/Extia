@@ -12,10 +12,10 @@
 	{% if orderlines != NULL %}
 		{% for orderline in orderlines %}
 				<td>
-					{{orderline.olQtt}} x {{orderline.pId}} <a href="{{ path("tbs_delete_orderline", { id: orderline.OlId}) }}">Delete</a> </h3>
+					{{orderline.olQtt}} x {{orderline.pId}} <a href="{{ path("tbs_delete_orderline", { id: orderline.OlId}) }}">
+					<span class="glyphicon glyphicon-remove useraction"></span></a> </h3>
 
 					{% set count = count + orderline.olQtt %}
-					
 				</td>
 		{% endfor %}
 	{% endif %}
@@ -37,8 +37,6 @@
 				{% if form2.vars.value.olQtt <= 0 and form2.vars.value.olQtt != null %}
 					<h8>Quantité doit être supérieure à 0</h8>
 				{% endif %}
-
-
 
 			</div>
 		</div>
