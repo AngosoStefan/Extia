@@ -41,7 +41,7 @@ class Product
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="Stock",cascade={"persist"})
-     * @ORM\JoinColumn(name="s_id", referencedColumnName="s_id",nullable=false)
+     * @ORM\JoinColumn(name="s_id", referencedColumnName="s_id",nullable=false, onDelete="CASCADE")
      */
     private $sId;
 

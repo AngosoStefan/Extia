@@ -12,7 +12,7 @@
 	{% if orderlines != NULL %}
 		{% for orderline in orderlines %}
 				<td>
-					{{orderline.olQtt}} x {{orderline.pId}}</h3>
+					{{orderline.olQtt}} x {{orderline.pId}} <a href="{{ path("tbs_delete_orderline", { id: orderline.OlId}) }}">Delete</a> </h3>
 
 					{% set count = count + orderline.olQtt %}
 					
@@ -29,7 +29,7 @@
 				Quantit&eacute;:
 			</div>
 			<div class="col-lg-3">
-				{{ form_widget(form2.olQtt, { 'id': 'nb_item','value' : null }) }}
+				{{ form_widget(form2.olQtt, {'value' : 0 }) }}
 
 				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
 					<h8>Quantité doit être inférieure à 5</h8>
@@ -55,26 +55,13 @@
 		<br>
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-				<input type="submit" value="Ajouter un autre produit">
+				<input type="submit" value="Ajouter ce produit">
 			</div>
 		</div>
 		<br>
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-				{% for location in locations %}
-
-					{% if location.lName == basket.lId.__toString() %}
-
-						<input type='hidden' id='posx' value={{location.lX}}>
-						<input type='hidden' id='posy' value={{location.lY}}>
-						<input type='hidden' id='name' value={{basket.Id}}>
-						<input type='hidden' id='count' value={{count}}>
-
-					{% endif %}	
-
-				{% endfor %}
-
-				<input id="command" type="submit" name="final" value="Finaliser la commande">
+				<input type="submit" name="final" value="Poursuivre la commande">
 			</div>
 		</div>
 	</form>

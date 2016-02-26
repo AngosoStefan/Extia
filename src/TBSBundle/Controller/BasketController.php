@@ -55,6 +55,32 @@ class BasketController extends Controller
         return $this->render('TBSBundle:Basket:add.html.twig',array('form'=> $form->createView(),));
     }
 
+    public function deleteAction(Basket $basket){
 
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+
+        $em->remove($basket);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl("tbs_index"));
+
+     }
+
+    public function confirmAction(Basket $basket){
+
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+
+        $basket->setBStatus('sent');
+        $em->persist($basket);
+        $em->flush();   
+
+
+        return $this->redirect($this->generateUrl("tbs_index"));
+
+    }
 
 }

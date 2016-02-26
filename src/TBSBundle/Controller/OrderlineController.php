@@ -15,19 +15,17 @@ class OrderlineController extends Controller
 
         // Boucle d'ajout de ligne
         $o = new Orderline();
-        $ols = new Orderline();
         $form2 = $this->createForm('TBSBundle\Form\OrderlineType', $o);
         $form2->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         $count = 0;
 
 
-        $ols = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
+        $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
         $locations = $em->getRepository("TBSBundle:Location")->findAll();
 
-        foreach ($ols as $ol) {
-            // $advert est une instance de Advert
-            $count = ($count) + ($ol->getOlQtt());
+        foreach ($orderlines as $orderline) {
+            $count = ($count) + ($orderline->getOlQtt());
             // echo $count;
         }
         $count = $count + $o->getOlQtt();
@@ -35,38 +33,13 @@ class OrderlineController extends Controller
 
         if(isset($_POST['final']))
         {
-            
-            $o->setBId($em->getRepository("TBSBundle:Basket")->find($basket->getBId()));
-
-            if($o->getOlQtt() != 0)
+            if ($orderlines == null)
             {
-                $pid = $o->getPId();
-
-                $product = $em->getRepository("TBSBundle:Product")->findOneByPId($pid);
-
-                $stock = $em->getRepository("TBSBundle:Stock")->findOneBySId($product->getSId());
-
-                $new_stock = $stock->getSTotal() - ($o->getOlQtt() * $product->getPUnit());
-
-                if($count>4  || $new_stock < 0 )
-                {
-                    $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());  
-                    echo "We cant process your order";
-                    return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,'locations'=>$locations));
-                }
-
-                $stock->setSTotal($new_stock);
-
-                $em->persist($o);
-                $em->persist($stock);
+               echo "Panier vide";
+               return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
             }
-
-            // Finalisation de la commande
-            $basket->setBStatus('sent');
-            $em->persist($basket);
-            $em->flush();   
-
-            return $this->redirect($this->generateUrl("tbs_index"));
+            //
+            return $this->render('TBSBundle:Orderline:confirmation.html.twig',array('basket'=> $basket,'locations'=>$locations,'orderlines'=> $orderlines,));
 
         }
         
@@ -121,5 +94,23 @@ class OrderlineController extends Controller
     }
 
 
+    public function deleteAction(Orderline $order,Request $request){
+
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $basket = $em->getRepository("TBSBundle:Basket")->find($order->getBId());
+
+        $em->remove($order);
+        $em->flush();
+
+        $o = new Orderline();
+        $orderlines = $em->getRepository("TBSBundle:Orderline")->findByBId($basket->getBId());
+
+        $form2 = $this->createForm('TBSBundle\Form\OrderlineType', $o);
+        $form2->handleRequest($request);
+        return $this->render('TBSBundle:Orderline:add.html.twig',array('form2'=> $form2->createView(), 'basket'=> $basket ,'orderlines'=> $orderlines,));
+
+     }
 
 }

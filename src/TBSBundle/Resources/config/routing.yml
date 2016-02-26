@@ -73,3 +73,15 @@ tbs_edit_product:
 tbs_delete_product:
     path:     /{id}/deleteproduct
     defaults: { _controller: TBSBundle:Product:delete }
+
+tbs_delete_basket:
+    path:     /{id}/deletebasket
+    defaults: { _controller: TBSBundle:Basket:delete }
+
+tbs_delete_orderline:
+    path:     /{id}/deleteorder
+    defaults: { _controller: TBSBundle:Orderline:delete }
+
+tbs_confirmed_basket:
+    path:     /{id}/validbasket
+    defaults: { _controller: TBSBundle:Basket:confirm }

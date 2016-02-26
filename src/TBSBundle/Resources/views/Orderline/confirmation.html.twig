@@ -1,0 +1,47 @@
+{% extends "TBSBundle::layout.html.twig" %}
+
+{% block subzone %}
+
+	{# <h1>Ajouter un produit</h1> #}
+
+	<h1>Reçu de la commande</h1>
+	<table>		
+	<h2>Votre panier</h2>
+	<br>
+	{% set count = 0 %}
+	{% if orderlines != NULL %}
+		{% for orderline in orderlines %}
+				<td>
+					{{orderline.olQtt}} x {{orderline.pId}}</h3>
+
+					{% set count = count + orderline.olQtt %}
+					
+				</td>
+		{% endfor %}
+	{% endif %}
+		</tr>
+	
+	</table>
+	<br>	
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				{% for location in locations %}
+
+					{% if location.lName == basket.lId.__toString() %}
+
+						<input type='hidden' id='posx' value={{location.lX}}>
+						<input type='hidden' id='posy' value={{location.lY}}>
+						<input type='hidden' id='name' value={{basket.Id}}>
+						<input type='hidden' id='count' value={{count}}>
+
+					{% endif %}	
+
+				{% endfor %}
+
+				<a id='command' href="{{ path("tbs_confirmed_basket", { id: basket.BId}) }}">Finaliser la commande</a>
+				<a href="{{ path("tbs_delete_basket", { id: basket.BId}) }}">Annuler la commande</a>
+			</div>
+		</div>
+	</form>
+
+{% endblock %}

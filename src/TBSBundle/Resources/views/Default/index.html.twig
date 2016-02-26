@@ -3,11 +3,6 @@
 
 {% block subzone %}
 
-<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="{{ asset('js/javascript.js')}}"></script>
-
 	{% if (app.user == 'ca') %}
 		<h1>Stocks à recharger</h1>
 		{% for stock in stocks %}
@@ -50,15 +45,13 @@
 			
 			</div>
 			
-			
-
-			<script type="text/javascript">
+			<!--<script type="text/javascript">
 				var auto_refresh = setInterval(
 				  function ()
 				  {
 				   $("#list").load(location.href + " #list");
 				  }, 5000); // rafraichis toutes les 10000 millisecondes
-			</script>
+			</script>-->
 
 	{% elseif app.user=='admin' %}
 		
