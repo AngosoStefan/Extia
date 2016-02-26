@@ -179,6 +179,19 @@ $(document).ready(function(){
 			  cmdClient.publish(client);
 	});
 
+	$('#done').click(function(){
+  		var pub = new ROSLIB.Topic({
+			    ros : ros,
+			    name : '/next_Client',
+			    messageType : 'std_msgs/Int8'
+			  });
+		var pressed = new ROSLIB.Message({
+			    data : 2
+			  });
+			  pub.publish(pressed);
+			  alert("hey");
+  	});
+
 	$('#calldrink').click(function(){
 		// alert('hi');
     		// Publishing a Topic

@@ -54,7 +54,8 @@
 	{% elseif app.user=='admin' %}
 		
 	{% else %}
-		
+
+		{% set nb_lines = 0  %}
 		<!-- Si l'utilisateur a déjà passé commande -->
 
 		{% if userBaskets != NULL %}
@@ -67,6 +68,7 @@
 
 				{% if (userBasket.bStatus == 'sent') or (userBasket.bStatus == 'ongoing') %}
 
+					{% set nb_lines = nb_lines + 1  %}
 					<h2>Commandes envoyées</h2>
 					<br>
 					<table>
@@ -93,14 +95,24 @@
 						</tr>
 
 					</table>
+
 					<br>
-					<a href="{{ path('tbs_received_basket', {id:userBasket.bId}) }}"><p class="useraction">Confirmation</p></a>
+					{% if userBasket.bStatus == 'ongoing' %}
+						<a id='done' href="{{ path('tbs_received_basket', {id:userBasket.bId}) }}"><p class="useraction">Confirmation</p></a>
+					{% endif %}
 
 				{% endif %}
 
 			{% endfor %}
 
 		{% endif %}
+
+		{% if nb_lines == 0 %}
+
+			<h2>Vous n'avez pas de commmande en cours</h2>
+
+		{% endif %}
+
 	{% endif %}
 
 {% endblock %}
