@@ -1,8 +1,37 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
+  
+    <div class="row">
+		<div class="col-lg-offset-1 col-lg-2 justify" >
+			<b>Pseudo:</b>
+		</div>
+		<div class="col-lg-8 justify" >
+			{{ form_widget(form.username) }}
+		</div>
+	</div>
+	<br>	
+    <div class="row">
+		<div class="col-lg-offset-1 col-lg-2 justify" >
+			<b>Email:</b>
+		</div>
+		<div class="col-lg-8 justify" >
+			{{ form_widget(form.email) }}
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-offset-1 col-lg-2 justify" >
+			<b>Mdp actuel:</b>
+		</div>
+		<div class="col-lg-8 justify" >
+			{{ form_widget(form.current_password) }}
+		</div>
+	</div>
+	
+
+	<br>
     <div>
-        <input type="submit" value="{{ 'Valider'|trans }}" />
+        <input type="submit" value="Enregistrer" />
     </div>
 {{ form_end(form) }}
