@@ -14,19 +14,19 @@
 
 		{% elseif app.user == 'ca' %}
 
-		<div class="leftoption">
-			<a href="{{ path('tbs_index') }}"><span class="glyphicon glyphicon-list-alt"></span></a>
-		</div>
+			<div class="leftoptionca">
+				<a href="{{ path('tbs_index') }}"><span class="glyphicon glyphicon-list-alt"></span></a>
+			</div>
 
-		<div class="leftoption">
-			<a href="{{ path('tbs_stocks') }}"><span class="glyphicon glyphicon glyphicon-qrcode"></span></a>
-			<a href="{{ path('tbs_add_stock') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
-		</div>
+			<div class="leftoptionca">
+				<a href="{{ path('tbs_stocks') }}"><span class="glyphicon glyphicon glyphicon-qrcode"></span></a>
+				<a href="{{ path('tbs_add_stock') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
+			</div>
 
-		<div class="leftoption">
-			<a href="{{ path('tbs_products') }}"><span class="glyphicon glyphicon-glass"></span></a>
-			<a href="{{ path('tbs_add_product') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
-		</div>
+			<div class="leftoptionca">
+				<a href="{{ path('tbs_products') }}"><span class="glyphicon glyphicon-glass"></span></a>
+				<a href="{{ path('tbs_add_product') }}"><span class="glyphicon glyphicon glyphicon-plus-sign"></span></a>
+			</div>
 
 		{% elseif app.user != null %}
 		

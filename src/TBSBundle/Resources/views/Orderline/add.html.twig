@@ -3,7 +3,9 @@
 {% block subzone %}
 
 	{# <h1>Ajouter un produit</h1> #}
-
+	{% if form2.vars.value.olQtt == 0 %}
+		<h4>Panier vide</h4>
+	{% endif %}
 	<h1>Passer une commande</h1>
 	<table class="widetable">		
 	<h2>Votre panier</h2>
@@ -30,6 +32,8 @@
 			</div>
 			<div class="col-lg-3">
 				{{ form_widget(form2.olQtt, {'value' : 0 }) }}
+
+				
 
 				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
 					<h8>Quantité doit être inférieure à 5</h8>
