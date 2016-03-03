@@ -5,6 +5,9 @@
 	<script src="{{ asset('js/buttons.js')}}"></script>
 
 	<div class="maincontent">
+
+		<!-- Formulaire permettant de remplir un Basket avec l'étage et le lieu -->
+
 		<h1>Passer une commande</h1>
 
 		<form action="{{path("tbs_add_basket", { id: app.user.id}) }}" method="post" enctype="multipart/form-data">
