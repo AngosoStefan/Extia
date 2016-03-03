@@ -7,13 +7,16 @@
 		{% for stock in stocks %}
 			Produit : {{stock.sName}} <a href="{{ path('tbs_edit_stock', {id:stock.sId}) }}"><span class="glyphicon glyphicon-pencil useraction"></span></a>
 		{% endfor %}
+
+
 		<br>
+		{# Affichage des commandes en cours #}
 		<h1>Les commandes</h1>
 		
-			<div id="list">
-				{% set bId = 0 %}
+		<div id="list">
+			{% set bId = 0 %}
 
-				{% for basket in baskets %}
+			{% for basket in baskets %}
 				<table class="widetable">
 					<tr>	
 						<th>
@@ -41,15 +44,8 @@
 				</form>
 			{% endif %}
 			
-			</div>
+		</div>
 			
-			<!--<script type="text/javascript">
-				var auto_refresh = setInterval(
-				  function ()
-				  {
-				   $("#list").load(location.href + " #list");
-				  }, 5000); // rafraichis toutes les 10000 millisecondes
-			</script>-->
 
 	{% elseif app.user=='admin' %}
 		
@@ -59,7 +55,8 @@
 		<!-- Si l'utilisateur a déjà passé commande -->
 
 		{% if userBaskets != NULL %}
-
+			<h1>Récapitulif des Commandes</h1>
+			<br>
 			<!-- On check sa liste de commandes -->
 
 			{% for userBasket in userBaskets %}
@@ -69,7 +66,7 @@
 				{% if (userBasket.bStatus == 'sent') or (userBasket.bStatus == 'ongoing') %}
 
 					{% set nb_lines = nb_lines + 1  %}
-					<h2>Commandes envoyées</h2>
+					
 					<br>
 					<table class="widetable">
 						<tr>	
