@@ -2,11 +2,18 @@
 
 {% block subzone %}
 
-	{# <h1>Ajouter un produit</h1> #}
+	<!-- En cas de panier vide -->
+
 	{% if form2.vars.value.olQtt == 0 %}
 		<h4>Panier vide</h4>
 	{% endif %}
+	
 	<h1>Passer une commande</h1>
+	
+	<!-- Gestion de la commande -->
+
+	<!-- Panier actuel -->
+
 	<table class="widetable">		
 	<h2>Votre panier</h2>
 	<br>
@@ -22,9 +29,12 @@
 		{% endfor %}
 	{% endif %}
 		</tr>
-	
 	</table>
+	
 	<br>
+
+	<!-- Ajout de nouveaux produits -->
+
 	<form action="{{path("tbs_add_orderline", { id: basket.BId}) }}" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-3 col-lg-offset-3">
@@ -33,7 +43,7 @@
 			<div class="col-lg-3">
 				{{ form_widget(form2.olQtt, {'value' : 0 }) }}
 
-				
+				<!-- Tests de quantité de produits -->
 
 				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
 					<h8>Quantité doit être inférieure à 5</h8>

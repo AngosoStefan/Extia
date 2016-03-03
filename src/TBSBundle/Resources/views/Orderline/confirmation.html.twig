@@ -2,51 +2,58 @@
 
 {% block subzone %}
 
-	{# <h1>Ajouter un produit</h1> #}
+	<!-- Récapitalif de la commande -->
 
 	<h1>Reçu de la commande</h1>
+
+	<!-- Panier actuel -->
+
 	<table class="widetable">		
 	<h2>Votre panier</h2>
 	<br>
 	{% set count = 0 %}
-	{% if orderlines != NULL %}
-		{% for orderline in orderlines %}
-				<td>
-					{{orderline.olQtt}} x {{orderline.pId}}</h3>
+		<tr>
+		{% if orderlines != NULL %}
+			{% for orderline in orderlines %}
+					<td>
+						<h3>{{orderline.olQtt}} x {{orderline.pId}}</h3>
 
-					{% set count = count + orderline.olQtt %}
-					
-				</td>
-		{% endfor %}
-	{% endif %}
+						{% set count = count + orderline.olQtt %}
+					</td>
+			{% endfor %}
+		{% endif %}
 		</tr>
-	
 	</table>
-	<br>	
+	<br>
+
 		<div class="row">
+			
 			<div class="col-lg-6 col-lg-offset-3">
+				
+				<!-- Champs cachés pour la localisation du robot -->
+
 				{% for location in locations %}
-
 					{% if location.lName == basket.lId.__toString() %}
-
 						<input type='hidden' id='posx' value={{location.lX}}>
 						<input type='hidden' id='posy' value={{location.lY}}>
 						<input type='hidden' id='name' value={{basket.Id}}>
 						<input type='hidden' id='count' value={{count}}>
-
 					{% endif %}	
-
 				{% endfor %}
+
 				<div class="row">
+					<!-- Annuler la commande -->
 					<div class="col-lg-5 col-lg-offset-1">
 						<a href="{{ path("tbs_delete_basket", { id: basket.BId}) }}"><span class="useraction">Annuler la commande</span></a>
 					</div>
+
+					<!-- Confirmer la commande -->
 					<div class="col-lg-5">	
 						<a id='command' href="{{ path("tbs_confirmed_basket", { id: basket.BId}) }}"><span class="useraction">Finaliser la commande</span></a>
 					</div>
 				</div>
+			
 			</div>
 		</div>
-	</form>
 
 {% endblock %}

@@ -94,6 +94,9 @@
 					</table>
 
 					<br>
+
+					<!-- La confirmation de la commande se fait à l'aide d'un bouton -->
+
 					{% if userBasket.bStatus == 'ongoing' %}
 						<a id='done' href="{{ path('tbs_received_basket', {id:userBasket.bId}) }}"><p class="useraction">Confirmation</p></a>
 					{% endif %}
