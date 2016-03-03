@@ -16,6 +16,7 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:index.html.twig');
     }
 
+    /*Ajout d'un produit*/
     public function addAction(Request $request){
         $p = new Product();
         $form = $this->createForm('TBSBundle\Form\ProductType', $p);
@@ -33,6 +34,7 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:add.html.twig',array('form'=> $form->createView(),));
     }
 
+    /*Affiher tous les produits*/
     public function productsAction(){
  
         $em = $this->getDoctrine()->getManager();
@@ -40,6 +42,7 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:products.html.twig',array('products'=>$products));
     }
 
+    /*Modifier un produit*/
     public function editAction(Request $request, Product $product){
  
         $em = $this->getDoctrine()->getManager();
@@ -58,6 +61,8 @@ class ProductController extends Controller
         return $this->render('TBSBundle:Product:edit.html.twig',array('form'=> $form->createView(), 'product'=> $product,));
     }
 
+
+    /*Supression d'un produit*/
     public function deleteAction(Product $product){
  
         $em = $this->getDoctrine()->getManager();

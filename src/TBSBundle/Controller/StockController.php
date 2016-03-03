@@ -16,7 +16,7 @@ class StockController extends Controller
         return $this->render('TBSBundle:Stock:index.html.twig');
     }
 
-
+    /*Ajout d'un stock*/
     public function addAction(Request $request){
         $s = new Stock();
         $form = $this->createForm('TBSBundle\Form\StockType', $s);
@@ -37,6 +37,7 @@ class StockController extends Controller
         return $this->render('TBSBundle:Stock:add.html.twig',array('form'=> $form->createView(),));
     }
 
+    /*Affichage de touts les stocks*/
     public function stocksAction(){
  
         $em = $this->getDoctrine()->getManager();
@@ -44,6 +45,7 @@ class StockController extends Controller
         return $this->render('TBSBundle:Stock:stocks.html.twig',array('stocks'=>$stocks));
     }
 
+    /*Modifier un stock*/
     public function editAction(Request $request, Stock $stock){
  
         $em = $this->getDoctrine()->getManager();
@@ -62,6 +64,8 @@ class StockController extends Controller
         return $this->render('TBSBundle:Stock:edit.html.twig',array('form'=> $form->createView(), 'stock'=> $stock,));
     }
 
+
+    /*Suppression d'un stock*/
     public function deleteAction(Stock $stock){
  
         $em = $this->getDoctrine()->getManager();
