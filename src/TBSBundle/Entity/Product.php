@@ -28,14 +28,14 @@ class Product
      *
      * @ORM\Column(name="p_name", type="string", length=25)
      */
-    private $pName;
+    private $pName;//Nom du produit
 
     /**
      * @var int
      *
      * @ORM\Column(name="p_unit", type="integer")
      */
-    private $pUnit;
+    private $pUnit;//Unité consommé par le produit dans le stock
 
     /**
      * @var int
@@ -43,7 +43,7 @@ class Product
      * @ORM\ManyToOne(targetEntity="Stock",cascade={"persist"})
      * @ORM\JoinColumn(name="s_id", referencedColumnName="s_id",nullable=false, onDelete="CASCADE")
      */
-    private $sId;
+    private $sId;//Stock associé au produit
 
 
     

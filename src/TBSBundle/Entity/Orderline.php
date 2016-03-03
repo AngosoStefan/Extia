@@ -28,7 +28,7 @@ class Orderline
      *
      * @ORM\Column(name="ol_qtt", type="integer")
      */
-    private $olQtt;
+    private $olQtt;//Quantité souhaitée d'une boisson
 
     /**
      * @var int
@@ -36,7 +36,7 @@ class Orderline
      * @ORM\ManyToOne(targetEntity="Basket")
      * @ORM\JoinColumn(name="b_id", referencedColumnName="b_id", onDelete="CASCADE")
      */
-    private $bId;
+    private $bId;//Panier associé à la commande
 
     /**
      * @var int
@@ -44,7 +44,7 @@ class Orderline
      * @ORM\ManyToOne(targetEntity="Product")
      * @ORM\JoinColumn(name="p_id", referencedColumnName="p_id", nullable=false, onDelete="CASCADE")
      */
-    private $pId;
+    private $pId;//Produit commandé
 
 
 

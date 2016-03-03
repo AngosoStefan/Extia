@@ -28,14 +28,14 @@ class Stock
      *
      * @ORM\Column(name="s_name", type="string", length=25)
      */
-    private $sName;
+    private $sName;//Nom du stock
 
     /**
      * @var int
      *
      * @ORM\Column(name="s_total", type="integer")
      */
-    private $sTotal;
+    private $sTotal;//Stock total
 
 
     

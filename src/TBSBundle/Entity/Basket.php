@@ -30,7 +30,7 @@ class Basket
      *
      * @ORM\Column(name="b_floor", type="string", length=10)
      */
-    private $bFloor;
+    private $bFloor;//Etage
 
     /**
      * @var int
@@ -38,7 +38,7 @@ class Basket
      * @ORM\ManyToOne(targetEntity="Location")
      * @ORM\JoinColumn(name="l_id", referencedColumnName="l_id", onDelete="CASCADE")
      */
-    private $lId;
+    private $lId;//Salle
 
     /**
      * @var int
@@ -46,21 +46,21 @@ class Basket
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $id;
+    private $id;//Utilisateur
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="b_date", type="datetime")
      */
-    private $bDate;
+    private $bDate;//Date de la commande
 
     /**
      * @var string
      *
      * @ORM\Column(name="b_status", type="string", length=10)
      */
-    private $bStatus;
+    private $bStatus;//Statut de la commande
 
 
 

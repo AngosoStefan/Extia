@@ -27,7 +27,7 @@ class Location
      *
      * @ORM\Column(name="l_name", type="string", length=25)
      */
-    private $lName;
+    private $lName;//Nom de la salle
 
 
     /**
@@ -35,7 +35,7 @@ class Location
      *
      * @ORM\Column(name="l_x", type="integer")
      */
-    private $lX;
+    private $lX;//Position x de la salle
 
 
     /**
@@ -43,7 +43,7 @@ class Location
      *
      * @ORM\Column(name="l_y", type="integer")
      */
-    private $lY;
+    private $lY;//Position y de la salle
 
 
     /**
