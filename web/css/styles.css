@@ -24,6 +24,7 @@
     src: url("../fonts/GothamRnd-BoldIta.otf");
 }
 
+
 /* Dimensionnement général */
 
 html,body {
@@ -44,12 +45,20 @@ html,body {
   padding:0px;
 }
 
+
 /* Titre principal */
 
 h1 {
 	font-weight: bold;
 	color: #F26e27;
 }
+
+h3 {
+	text-align: center;
+}
+
+
+/* Généralités */
 
 .register {
 	font-weight: bold;
@@ -67,6 +76,7 @@ h1 {
 .mainpic {
 	width: 100%;
 }
+
 
 /* Gestion des liens */
 
@@ -94,6 +104,7 @@ a:hover:visited {
 	color: #F26e27;
 }
 
+
 /* Boutons edit, delete */
 
 .useraction {
@@ -105,11 +116,13 @@ a:hover:visited {
 	color: #F26e27;
 }
 
+
 /* Zone du milieu */
 
 .midzone {
 	margin-top: 2%;
 }
+
 
 /* Menu */
 
@@ -118,6 +131,7 @@ li {
 	list-style-type:none;
 	font-size: 1.5em;
 }
+
 
 /* Zone principale */
 
@@ -135,6 +149,7 @@ li {
 	color: #22313F;
 }
 
+/* Contenu de la mainzone */
 .subzone {
 }
 
@@ -173,12 +188,6 @@ input {
 	color:black;
 }
 
-/* Liens index */
-
-h3 {
-	text-align: center;
-}
-
 
 /* Tableaux */
 
@@ -194,11 +203,15 @@ table {
 	text-align: center;
 }
 
+
 /* Centrer */
 
 .center_h {
 	text-align: center;
 }
+
+
+/* Boutons de la map statique */
 
 .btn {
 	border-radius:50%;
@@ -226,8 +239,4 @@ table {
 	position:absolute;
 	top:55%;
 	left:26%;
-}
-
-.test:hover{
-	color:red;
 }
