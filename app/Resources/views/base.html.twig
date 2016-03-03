@@ -2,32 +2,51 @@
 
     <head>
         <meta charset="utf-8" />
+        
+        <!-- Bootstrap -->
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+
+        <!-- Librairie de ros javascript -->
         <script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
         <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+        
+        <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Un de nos 2 fichiers de javascript -->
         <script src="{{ asset('js/javascript.js')}}"></script>
     </head>
 
+<!-- Structure générale du site -->
 <body class="container-fluid">
 
+    <!-- Bannière -->
     <div class="row">
         <div class="col-lg-10 col-lg-offset-1 bandeau">
             <img class="mainpic" src="{{ asset('assets/banniere.png') }}"/>
         </div>
     </div>
+    
+    <!-- Zone principale --> 
     <div class="row midzone">
+
+        <!-- Menu de gauche -->
         {% block menu %}
 
         {% endblock menu %}
+        
+        <!-- Zone centrale -->
         {% block mainzone %}
 
         {% endblock mainzone %}
+        
+        <!-- Menu de droite -->
         {% block options %}
 
         {% endblock %}
     </div>
+
+    <!-- Footer : nous ne l'avons pas utilisé -->
     <div class="row">
         {% block footer %}
 

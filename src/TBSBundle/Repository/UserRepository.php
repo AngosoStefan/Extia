@@ -11,6 +11,7 @@ namespace TBSBundle\Repository;
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    /* Trouver un utilisateur */
 	public function findUserByUsername($username)
     {
         $query = $this->getEntityManager()
@@ -21,6 +22,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    /* Compter l'ensemble des utilisateurs */
     public function countUsers()
     {
         $query = $this->getEntityManager()
