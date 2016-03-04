@@ -2,11 +2,6 @@
 
 {% block subzone %}
 
-	<!-- En cas de panier vide -->
-
-	{% if form2.vars.value.olQtt == 0 %}
-		<h4>Panier vide</h4>
-	{% endif %}
 	
 	<h1>Passer une commande</h1>
 	
@@ -15,7 +10,11 @@
 	<!-- Panier actuel -->
 
 	<table class="widetable">		
-	<h2>Votre panier</h2>
+	<h2>Votre panier
+		{% if orderlines == null %}
+			est vide
+		{% endif %}
+	</h2>
 	<br>
 	{% set count = 0 %}
 	{% if orderlines != NULL %}
@@ -45,10 +44,10 @@
 
 				<!-- Tests de quantité de produits -->
 
-				{% if form2.vars.value.olQtt > 4 and form2.vars.value.olQtt != null %}
+				{% if form2.vars.value.olQtt > 4 %}
 					<h8>Quantité doit être inférieure à 5</h8>
 				{% endif %}	
-				{% if form2.vars.value.olQtt <= 0 and form2.vars.value.olQtt != null %}
+				{% if form2.vars.value.olQtt <= 0 or form2.vars.value.olQtt == 0 %}
 					<h8>Quantité doit être supérieure à 0</h8>
 				{% endif %}
 
