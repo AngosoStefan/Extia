@@ -150,7 +150,7 @@ $(document).ready(function(){
 			    state : 1
 			  });
 			  pub.publish(pressed);
-			  alert('hey');
+			  /*alert('hey');*/
   });
 
 
@@ -158,7 +158,7 @@ $(document).ready(function(){
 		var client_name = $('#name').val();
 		var posx = $('#posx').val();
 		var posy = $('#posy').val();
-		alert(posy);
+		/*alert(posy);*/
 		
 		var nb_item = $('#count').val();
 
@@ -189,7 +189,7 @@ $(document).ready(function(){
 			    data : 2
 			  });
 			  pub.publish(pressed);
-			  alert("hey");
+			 /* alert("hey");*/
   	});
 
 	$('#calldrink').click(function(){
