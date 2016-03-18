@@ -22,7 +22,8 @@ class DefaultController extends Controller
             $orders = $em->getRepository("TBSBundle:Orderline")->findOrderlines();//Récupération des commandes
 
             /* Stocks à 0 */
-            $stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
+            //$stocks = $em->getRepository("TBSBundle:Stock")->findBySTotal('0');
+            $stocks = $em->getRepository("TBSBundle:Stock")->findAll();
             return $this->render('TBSBundle:Default:index.html.twig',array('orders'=>$orders,'stocks'=>$stocks,'baskets'=>$baskets));
         }
         elseif ($user == 'admin')
